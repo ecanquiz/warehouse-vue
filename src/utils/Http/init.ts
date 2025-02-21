@@ -20,3 +20,13 @@ export default<Init> {
     return Promise.reject(error);
   }
 }
+
+export const articleInit: Init = {
+  baseURL: import.meta.env.VITE_ARTICLE_API_URL, //process.env.VITE_ARTICLE_API_URL,  
+  withCredentials: false,
+  withXSRFToken: false,
+  customHeaders: { 
+    //'Content-Type': 'application/json', 
+    'Authorization': `Bearer ${import.meta.env.VITE_ARTICLE_API_SHARED_TOKEN}`
+  }
+}
