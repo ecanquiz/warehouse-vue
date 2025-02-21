@@ -22,7 +22,8 @@ export default defineConfig(({ mode }) => {
             __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
             'process.env': {                    
               VITE_APP_API_URL: `${env.VITE_APP_API_URL}`,
-              VITE_API_ARTICLE_URL: `${env.VITE_API_ARTICLE_URL}`
+              VITE_ARTICLE_API_URL: `${env.VITE_API_ARTICLE_URL}`,
+              VITE_ARTICLE_API_SHARED_TOKEN: `${env.VITE_ARTICLE_API_SHARED_TOKEN}`
             }
         },
         test: {
