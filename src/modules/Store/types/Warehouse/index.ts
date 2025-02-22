@@ -44,3 +44,9 @@ export type Link = {
   active: boolean;
 }
 
+export type StoreWarehouse = {
+  uuid: string
+  name: string
+  loading: boolean
+  error: string
+}
