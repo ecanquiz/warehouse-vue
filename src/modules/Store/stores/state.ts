@@ -1,6 +1,6 @@
-import type { SubStore } from '@/modules/Store/types/Store/SubStore'
+import type { StoreWarehouse } from '@/modules/Store/types/Warehouse/index'
 
-export default (): SubStore => ({
+export default (): StoreWarehouse => ({
   uuid: '',
   name: '',
   loading: false,

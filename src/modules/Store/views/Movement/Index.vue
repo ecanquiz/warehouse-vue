@@ -104,7 +104,7 @@ const {
             <td class="">              
               <AppLink
                 class="text-indigo-600 hover:text-indigo-800 underline"
-                :to="{ path: `/${routePath}/edit/${row.id}`, params: { id: row.id }}"
+                :to="{ path: `/${routePath}/edit/${row.id}`}"
               >
                 {{ row.number }}
               </AppLink>

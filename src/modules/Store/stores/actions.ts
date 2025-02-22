@@ -7,10 +7,10 @@ export default {
 
 
   handleChange() {
-    window.localStorage.setItem("sub-store", this.uuid);
+    window.localStorage.setItem("warehouse", this.uuid);
   },
   getSubStoreIni() {
-    const subStore = window.localStorage.getItem("sub-store");
+    const subStore = window.localStorage.getItem("warehouse");
     this.uuid  = subStore ? subStore : ''    
   }
 

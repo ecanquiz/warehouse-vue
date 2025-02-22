@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useSubStore } from "@/modules/Store/stores/"
+import { useStoreWarehouse } from "@/modules/Store/stores/"
 import useHttp from '@/composables/useHttp';
 import { getHelpWarehouses } from '@/modules/Store/services/Warehouse';
 
@@ -10,8 +10,8 @@ const {
     getError
 } = useHttp()
 
-const subStore = useSubStore()
-subStore.getSubStoreIni()
+const storeWarehouse = useStoreWarehouse()
+storeWarehouse.getSubStoreIni()
 const options = ref([])
 
 onMounted(() => {
@@ -38,8 +38,8 @@ onMounted(() => {
   <div class="relative flex justify-center">
     <h1 class="text-4xl place-self-end p-3">Almacén</h1>
     <select
-      v-model="subStore.uuid"
-      @change="subStore.handleChange"
+      v-model="storeWarehouse.uuid"
+      @change="storeWarehouse.handleChange"
       v-if="!pending"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-3xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     >
@@ -47,7 +47,7 @@ onMounted(() => {
       <option
         v-for="option in options"
         :value="option.id"
-        :selected="option.id === subStore.uuid"
+        :selected="option.id === storeWarehouse.uuid"
       >{{ option.name }}</option>
     </select>
     <div v-else>Loading...</div>
