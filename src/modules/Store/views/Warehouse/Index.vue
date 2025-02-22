@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // @ts-nocheck
-import useIndex from "../../composables/SubWarehouse/useIndex";
+import useIndex from "../../composables/Warehouse/useIndex";
 import AppPaginationB from "@/components/AppPaginationB.vue";
 import AppPageHeader from "@/components/AppPageHeader.vue"
 import AppBtn from "@/components/AppBtn.vue"
@@ -18,10 +18,10 @@ const {
 
 <template>
 <div>
-  <AppPageHeader> Sub Almacenes </AppPageHeader>
+  <AppPageHeader> Almacenes </AppPageHeader>
 
   <div class="flex space-x-2">
-    <AppLink class="btn btn-primary" to="/sub_warehouses/create">
+    <AppLink class="btn btn-primary" to="/warehouses/create">
       <span>Crear</span>
     </AppLink>
   </div>
@@ -66,7 +66,7 @@ const {
              <!--td class="">
               <AppLink
                 class="text-indigo-600 hover:text-indigo-800 underline"
-                :to="{ name: 'sub_warehouseEdit', params: { id: row.id }}"
+                :to="{ name: 'warehouseEdit', params: { id: row.id }}"
               >
                 {{ row.id }}
               </AppLink>
@@ -77,7 +77,7 @@ const {
             <td class="">
               <AppLink
                 class="text-indigo-600 hover:text-indigo-800 underline"
-                :to="{ name: 'sub_warehouseEdit', params: { id: row.id }}"
+                :to="{ name: 'warehouseEdit', params: { id: row.id }}"
               >
                 {{ row.name }}
               </AppLink>
@@ -89,7 +89,7 @@ const {
               <div class="flex items-center space-x-1">                
                 <AppBtn
                   class="btn btn-primary btn-xs"                    
-                  @click="router.push({ path: '/sub_warehouses/edit/'+row.id })"
+                  @click="router.push({ path: '/warehouses/edit/'+row.id })"
                 >
                   Editar
                 </AppBtn>
@@ -103,7 +103,7 @@ const {
             </td>
           </tr>
           <tr v-if="data.rows.length === 0">
-            <td class="" colspan="4">SubWarehouses not found.</td>
+            <td class="" colspan="4">Warehouses not found.</td>
           </tr>
         </tbody>
       </table>

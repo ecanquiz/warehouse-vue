@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { reactive } from "vue"
-import type { SubWarehouse } from "../../types/SubWarehouse"
+import type { Warehouse } from "../../types/Warehouse"
 
 // import type Errors from "../types/Errors"
 
 const props = defineProps<{
   id?: string
-  sub_warehouse: SubWarehouse
+  warehouse: Warehouse
    
   pending: boolean
   errors: any
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit', sub_warehouse: SubWarehouse, sub_warehouseId?: string): void
+  (e: 'submit', warehouse: Warehouse, warehouseId?: string): void
 }>()
 
-const form: SubWarehouse = reactive(props.sub_warehouse)
+const form: Warehouse = reactive(props.warehouse)
 
 const submit = async () => {
   emit('submit', {

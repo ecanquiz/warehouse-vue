@@ -2,7 +2,7 @@ import { reactive, onMounted } from "vue"
 import { onBeforeRouteUpdate } from "vue-router"
 import useTableGrid from "@/composables/useTableGrid"
 import useHttp from "@/composables/useHttp"
-import SubWarehouseService from "../../services/SubWarehouse"
+import WarehouseService from "../../services/Warehouse"
 
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined
 
@@ -27,10 +27,10 @@ export default () => {
 
     setSearch,
     setSort, 
-  } = useTableGrid(data, "/sub_warehouses")
+  } = useTableGrid(data, "/warehouses")
 
-  const getSubWarehouses = (routeQuery: string) => {
-    return SubWarehouseService.getSubWarehouses(routeQuery)
+  const getWarehouses = (routeQuery: string) => {
+    return WarehouseService.getWarehouses(routeQuery)
       .then((response) => {
         errors.value = {}
         data.rows = response.data.rows.data
@@ -48,10 +48,10 @@ export default () => {
     if (rowId === undefined)
       return
     else if (confirm(`¿Estás seguro que desea eliminar el registro ${rowId}?`)) {    
-      return SubWarehouseService.deleteSubWarehouse(rowId)
+      return WarehouseService.deleteWarehouse(rowId)
         .then((response) => {
           errors.value = {}
-          getSubWarehouses(
+          getWarehouses(
             new URLSearchParams(route.query as Params).toString()
           )
         })
@@ -64,14 +64,14 @@ export default () => {
 
   onBeforeRouteUpdate(async (to, from) => {      
     if (to.query !== from.query) {        
-      await getSubWarehouses(
+      await getWarehouses(
         new URLSearchParams(to.query as Params).toString()
       )
     }
   })
 
   onMounted(() => {
-    getSubWarehouses(
+    getWarehouses(
       new URLSearchParams(route.query as Params).toString()
     )
   })

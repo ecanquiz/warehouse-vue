@@ -1,15 +1,15 @@
 import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useHttp from "@/composables/useHttp"; //foreign_table_name
-import SubWarehouseService from "../../services/SubWarehouse"
+import WarehouseService from "../../services/Warehouse"
 
-import type { SubWarehouse } from "../../types/SubWarehouse"
+import type { Warehouse } from "../../types/Warehouse"
 
 
-export default (sub_warehouseId?: string) => {
+export default (warehouseId?: string) => {
   const router = useRouter();
   
-  const sub_warehouse: SubWarehouse = reactive({
+  const warehouse: Warehouse = reactive({
     uuid: "", 
     name: "", 
     description: "", 
@@ -25,13 +25,13 @@ export default (sub_warehouseId?: string) => {
   } = useHttp()
   
   onMounted(async () => {
-    if (sub_warehouseId) {
+    if (warehouseId) {
       pending.value = true
-      SubWarehouseService.getSubWarehouse(sub_warehouseId)
+      WarehouseService.getWarehouse(warehouseId)
         .then((response) => { 
-          // sub_warehouse.uuid = response.data.data.uuid 
-          sub_warehouse.name = response.data.data.name 
-          sub_warehouse.description = response.data.data.description 
+          // warehouse.uuid = response.data.data.uuid 
+          warehouse.name = response.data.data.name 
+          warehouse.description = response.data.data.description 
         })
         .catch((err) => {        
           errors.value = getError(err)
@@ -43,12 +43,12 @@ export default (sub_warehouseId?: string) => {
     
   })
 
-  const insertSubWarehouse = async (sub_warehouse: SubWarehouse) => {  
+  const insertWarehouse = async (warehouse: Warehouse) => {  
     pending.value = true
-    return SubWarehouseService.insertSubWarehouse(sub_warehouse)
+    return WarehouseService.insertWarehouse(warehouse)
       .then((response) => {         
         alert( response.data.message )
-        router.push( { path: '/sub_warehouses' } )
+        router.push( { path: '/warehouses' } )
       })
       .catch((err) => {                
         console.log( err.response.data )
@@ -59,12 +59,12 @@ export default (sub_warehouseId?: string) => {
       })
   }
 
-  const updateSubWarehouse = async (sub_warehouse: SubWarehouse, sub_warehouseId: string) => {
+  const updateWarehouse = async (warehouse: Warehouse, warehouseId: string) => {
     pending.value= true
-    return SubWarehouseService.updateSubWarehouse(sub_warehouseId, sub_warehouse)
+    return WarehouseService.updateWarehouse(warehouseId, warehouse)
       .then((response) => {
         alert( response.data.message )
-        router.push( { path: '/sub_warehouses' } )
+        router.push( { path: '/warehouses' } )
       })
       .catch((err) => {                
         console.log( err.response.data )
@@ -75,12 +75,12 @@ export default (sub_warehouseId?: string) => {
       })
   }
   
-  const submit = (sub_warehouse: SubWarehouse, sub_warehouseId?: string) => {  
-    !sub_warehouseId ? insertSubWarehouse(sub_warehouse)  : updateSubWarehouse(sub_warehouse, sub_warehouseId)
+  const submit = (warehouse: Warehouse, warehouseId?: string) => {  
+    !warehouseId ? insertWarehouse(warehouse) : updateWarehouse(warehouse, warehouseId)
   }
 
   return {
-    sub_warehouse,
+    warehouse,
     errors,
     
     pending,

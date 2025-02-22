@@ -1,6 +1,6 @@
 
 
-export type SubWarehouse = {
+export type Warehouse = {
   id?: string | number;
   uuid?: any; 
   name?: string; 
@@ -9,7 +9,7 @@ export type SubWarehouse = {
   _method?: 'PUT';
 }
 
-export type SubWarehouseTG = {
+export type WarehouseTG = {
   rows: Rows;
   sort: null | string;
   direction: null | string;
@@ -18,7 +18,7 @@ export type SubWarehouseTG = {
 
 export type Rows = {
   current_page: number;
-  data: SubWarehouseRow[];
+  data: WarehouseRow[];
   first_page_url: string;
   from: number;
   last_page: number;
@@ -32,7 +32,7 @@ export type Rows = {
   total: number;
 }
 
-export type SubWarehouseRow = {
+export type WarehouseRow = {
   uuid?: any; 
   name?: string; 
   description?: string; 

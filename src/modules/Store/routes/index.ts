@@ -108,21 +108,21 @@ export default [{
     meta: { middleware: [auth, admin] },
     component: () => import("@/modules/Store/views/Existence.vue").then(m => m.default),
 }, {
-    path: "/sub_warehouses",
-    name: "sub_warehouses",
+    path: "/warehouses",
+    name: "warehouses",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Store/views/SubWarehouse/Index.vue").then(m => m.default)
+    component: () => import("@/modules/Store/views/Warehouse/Index.vue").then(m => m.default)
 }, {
-    path: "/sub_warehouses/create",
-    name: "sub_warehouseCreate",
+    path: "/warehouses/create",
+    name: "warehouseCreate",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Store/views/SubWarehouse/CreateOrEdit.vue").then(m => m.default),
+    component: () => import("@/modules/Store/views/Warehouse/CreateOrEdit.vue").then(m => m.default),
     props: true
 }, {
-    path: "/sub_warehouses/edit/:id(\\d+)",
-    name: "sub_warehouseEdit",
+    path: "/warehouses/edit/:id(\\d+)",
+    name: "warehouseEdit",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Store/views/SubWarehouse/CreateOrEdit.vue").then(m => m.default),
+    component: () => import("@/modules/Store/views/Warehouse/CreateOrEdit.vue").then(m => m.default),
     props: true
 }, {
     path: "/articles",

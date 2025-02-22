@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useSubStore } from "@/modules/Store/stores/"
 import useHttp from '@/composables/useHttp';
-import { getHelpSubWarehouses } from '@/modules/Store/services/SubWarehouse';
+import { getHelpWarehouses } from '@/modules/Store/services/Warehouse';
 
 const {
     errors,
@@ -16,7 +16,7 @@ const options = ref([])
 
 onMounted(() => {
   pending.value = true
-  getHelpSubWarehouses()
+  getHelpWarehouses()
     .then((response) => { 
       options.value = response.data.map(r => ({
         id: r.uuid,
