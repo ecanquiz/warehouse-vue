@@ -4,7 +4,7 @@ import useRoutePath from "./useRoutePath"
 import { required, helpers } from "@vuelidate/validators";
 import type { Main, Detail } from "../../types/Movement"
 import useHttp from "@/composables/useHttp";
-import MovementDetailService from "@/modules/Store/services/MovementDetail";
+import MovementDetailService from "@/modules/Warehouse/services/MovementDetail";
 import type { Movement } from "../../types/Movement";
 
 

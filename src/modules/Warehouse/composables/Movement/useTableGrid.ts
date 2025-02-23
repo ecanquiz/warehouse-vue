@@ -1,6 +1,6 @@
 import { onMounted } from "vue"
 //import { getArticlesSearch } from '@/modules/Article/services/ArticleService'
-import { getArticlesSearch } from '@/modules/Store/services/Article'
+import { getArticlesSearch } from '@/modules/Warehouse/services/Article'
 
 interface Data {
   rows: string[];

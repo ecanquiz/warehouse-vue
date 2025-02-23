@@ -1,7 +1,7 @@
 import { ref, onMounted } from "vue"
 import useHttp from "@/composables/useHttp"
 import ExistenceService from "../../services/Existences"
-import type { Existence } from "@/modules/Store/types/Existence"
+import type { Existence } from "@/modules/Warehouse/types/Existence"
 
 export default () => {
   const { errors, getError } = useHttp();

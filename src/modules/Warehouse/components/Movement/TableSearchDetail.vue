@@ -1,7 +1,7 @@
 <script setup lang="ts">
 //https://dev.to/razi91/vue-arrays-and-v-model-17e0
 import { reactive, watch, inject} from "vue"
-import useTableGrid from "@/modules/Store/composables/Movement/useTableGrid"
+import useTableGrid from "@/modules/Warehouse/composables/Movement/useTableGrid"
 import AppPaginationC from "@/components/AppPaginationC.vue";
 //import IconCamera from "@/components/icons/menu/icon-products.vue"
 //import type { ArticleDetail } from "@/modules/Article/types/Article/ArticleDetail";
