@@ -1,5 +1,5 @@
 import Http from "@/utils/Http";
-//import type { MovementDetail } from "../types/Store/MovementDetail";
+//import type { MovementDetail } from "../types/Warehouse/MovementDetail";
 //import type { MovementDetail } from "../types/Movement";
 import type { Detail } from "../types/Movement";
 

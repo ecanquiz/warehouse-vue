@@ -2,9 +2,9 @@ import { onMounted, reactive, toRaw } from 'vue'
 import { useRouter } from 'vue-router'
 import useRoutePath from "./useRoutePath"
 import useHttp from "@/composables/useHttp";
-// import { useStoreWarehouse } from "@/modules/Store/stores/"
-import MovementService from "@/modules/Store/services/Movement";
-import MovementDetailService from "@/modules/Store/services/MovementDetail";
+// import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
+import MovementService from "@/modules/Warehouse/services/Movement";
+import MovementDetailService from "@/modules/Warehouse/services/MovementDetail";
 import type { Movement, Detail } from "../../types/Movement";
 
 export default (movementId?: string) => {
@@ -23,7 +23,7 @@ export default (movementId?: string) => {
       support_type_id: "",
       support_number: "",
       support_date: "",
-     // store_uuid: "" No more needed
+     // warehouse_uuid: "" No more needed
     },
     details: []
   })
@@ -80,7 +80,7 @@ export default (movementId?: string) => {
     
   const submit = async () => {    
     pending.value = true
-    // movement.main.store_uuid = storeWarehouse.uuid // It is not needed
+    // movement.main.warehouse_uuid = storeWarehouse.uuid // It is not needed
     return await MovementService.insertMovement(movementTypeId.value, toRaw(movement))
       .then((response) => {         
         alert( response.data.message )

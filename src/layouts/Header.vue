@@ -6,7 +6,7 @@ import Logout from "@/modules/Auth/components/Logout.vue"
 //import LoginIcon from "@/icons/LoginIcon.vue"
 import HomeIcon from "@/icons/HomeIcon.vue"
 import SelectTheme from "./SelectTheme.vue"
-import SelectWarehouse from "@/modules/Store/components/Warehouse/SelectWarehouse.vue"
+import SelectWarehouse from "@/modules/Warehouse/components/Warehouse/SelectWarehouse.vue"
 //import IconLogo from "@/icons/IconLogo.vue"
 
 const { isOpen, isClose } = useSidebar()

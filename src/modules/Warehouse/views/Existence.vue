@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // @ts-nocheck
-import ExistenceTable from "@/modules/Store/components/Existence/Table.vue"
-//import useIndex from "@/modules/Store/composables/Existence/useIndex";
-import useExistence from "@/modules/Store/composables/Existence/useExistence"
+import ExistenceTable from "@/modules/Warehouse/components/Existence/Table.vue"
+//import useIndex from "@/modules/Warehouse/composables/Existence/useIndex";
+import useExistence from "@/modules/Warehouse/composables/Existence/useExistence"
 import AppPaginationB from "@/components/AppPaginationB.vue";
 import AppPageHeader from "@/components/AppPageHeader.vue"
 import AppBtn from "@/components/AppBtn.vue"
