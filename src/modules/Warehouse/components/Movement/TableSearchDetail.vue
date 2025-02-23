@@ -95,21 +95,21 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
           <th class="px-4 py-1">
             <AppBtn
               class="bg-base-100 hover:text-gray-500"
-              @click.prevent="setSort('articles.int_cod')">
+              @click.prevent="setSort('article_warehouse.int_cod')">
                 CÓDIGO INTERNO
             </AppBtn>
           </th>      
           <th class="px-4 py-1">
             <AppBtn
               class="bg-base-100 hover:text-gray-500"
-              @click.prevent="setSort('articles.name')">
+              @click.prevent="setSort('article_warehouse.name')">
               NOMBRE DEL ARTÍCULO
             </AppBtn>
           </th>
           <th class="px-4 py-1">
             <AppBtn
               class="bg-base-100 hover:text-gray-500"
-              @click.prevent="setSort('sub_warehouses.name')">
+              @click.prevent="setSort('warehouses.name')">
               ALMACÉN
             </AppBtn>
           </th>       
