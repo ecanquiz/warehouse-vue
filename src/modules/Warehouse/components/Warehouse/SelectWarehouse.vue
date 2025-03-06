@@ -20,7 +20,7 @@ onMounted(() => {
     .then((response) => { 
       options.value = response.data.map(r => ({
         id: r.uuid,
-        name: r.name  
+        name: `${r.code} - ${r.name}`
       }));
       errors.value = {}
     })

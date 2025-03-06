@@ -10,7 +10,8 @@ export default (warehouseId?: string) => {
   const router = useRouter();
   
   const warehouse: Warehouse = reactive({
-    uuid: "", 
+    uuid: "",
+    code: "",
     name: "", 
     description: "", 
   })
@@ -30,6 +31,7 @@ export default (warehouseId?: string) => {
       WarehouseService.getWarehouse(warehouseId)
         .then((response) => { 
           // warehouse.uuid = response.data.data.uuid 
+          warehouse.code = response.data.data.code 
           warehouse.name = response.data.data.name 
           warehouse.description = response.data.data.description 
         })
