@@ -14,6 +14,11 @@ const {
   setSearch,
   setSort  
 } = useIndex()
+
+
+const toString = (arr) => {
+  return JSON.parse(arr).toString().replace(/,/g, ", ");
+}
 </script>
 
 <template>
@@ -52,13 +57,16 @@ const {
                 <AppLink to="#" @click.prevent="setSort('uuid')">uuid</AppLink>
               </th-->
               <th class="">
-                <AppLink to="#" @click.prevent="setSort('code')">name</AppLink>
+                <AppLink to="#" @click.prevent="setSort('code')">code</AppLink>
               </th>
               <th class="">
                 <AppLink to="#" @click.prevent="setSort('name')">name</AppLink>
               </th>
               <th class="">
                 <AppLink to="#" @click.prevent="setSort('description')">description</AppLink>
+              </th>
+              <th class="">
+                <AppLink to="#" @click.prevent="setSort('categories')">categorías</AppLink>
               </th>
                                      
             <th class="">Acción</th>
@@ -95,7 +103,10 @@ const {
             </td>
             <td class="">
               {{ row.description }}
-            </td> 
+            </td>
+            <td class="">
+              {{ toString(row.categories) }}
+            </td>
             <td class="">
               <div class="flex items-center space-x-1">                
                 <AppBtn

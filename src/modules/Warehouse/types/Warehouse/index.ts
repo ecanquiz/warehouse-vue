@@ -5,7 +5,8 @@ export type Warehouse = {
   uuid?: any;
   code?: string; 
   name?: string; 
-  description?: string; 
+  description?: string;
+  categories?: any[]
   
   _method?: 'PUT';
 }

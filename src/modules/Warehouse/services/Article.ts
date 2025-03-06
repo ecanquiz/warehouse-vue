@@ -1,5 +1,12 @@
-import Http from "@/utils/Http";
+import { Http as h } from "@/utils/Http";
+import { articleInit } from "@/utils/Http/init";
 import type { Article } from "../types/Article";
+
+const Http = new h( articleInit );
+
+export const getDistinctCategoriesByArticleDetail = () => {  
+  return Http.get("/api/distinct-categories-by-article-detail");
+}
 
 //export const getArticles = (query: string) => {  
   //return Http.get(`/api/articles/?${query}`);
@@ -31,6 +38,7 @@ export const deleteArticle = (articleId: string) => {
 
 export default {
   //getArticles,
+  getDistinctCategoriesByArticleDetail,
   getArticlesSearch,
   //getArticle,
   //insertArticle,
