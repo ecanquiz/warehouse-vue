@@ -116,13 +116,13 @@ export default [{
     path: "/warehouses/create",
     name: "warehouseCreate",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/Warehouse/CreateOrEdit.vue").then(m => m.default),
+    component: () => import("@/modules/Warehouse/views/Warehouse/Tabs.vue").then(m => m.default),
     props: true
 }, {
     path: "/warehouses/edit/:id(\\d+)",
     name: "warehouseEdit",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/Warehouse/CreateOrEdit.vue").then(m => m.default),
+    component: () => import("@/modules/Warehouse/views/Warehouse/Tabs.vue").then(m => m.default),
     props: true
 }, {
     path: "/articles",

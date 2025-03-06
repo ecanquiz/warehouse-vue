@@ -2,9 +2,8 @@ import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useHttp from "@/composables/useHttp"; //foreign_table_name
 import WarehouseService from "../../services/Warehouse"
-
+import ArticleService from "../../services/Article"
 import type { Warehouse } from "../../types/Warehouse"
-
 
 export default (warehouseId?: string) => {
   const router = useRouter();
@@ -13,10 +12,16 @@ export default (warehouseId?: string) => {
     uuid: "",
     code: "",
     name: "", 
-    description: "", 
+    description: "",
+    categories: []
   })
 
-  
+  type optionsVueMultiselect = {
+    name: string;
+    code: string
+  }[]
+
+  const categories = ref<optionsVueMultiselect>([])   
   
   const {  
     errors,
@@ -28,12 +33,20 @@ export default (warehouseId?: string) => {
   onMounted(async () => {
     if (warehouseId) {
       pending.value = true
+
+      ArticleService.getDistinctCategoriesByArticleDetail().then(response => {
+        categories.value = response.data.map( (r: optionsVueMultiselect) => ({ name: r, code: r }))
+      })
+
       WarehouseService.getWarehouse(warehouseId)
         .then((response) => { 
           // warehouse.uuid = response.data.data.uuid 
           warehouse.code = response.data.data.code 
           warehouse.name = response.data.data.name 
           warehouse.description = response.data.data.description 
+          warehouse.categories = JSON.parse(response.data.data.categories).map(r=> ({name: r, code: r})) 
+
+          console.log('dsfdgf', warehouse.categories )
         })
         .catch((err) => {        
           errors.value = getError(err)
@@ -77,11 +90,12 @@ export default (warehouseId?: string) => {
       })
   }
   
-  const submit = (warehouse: Warehouse, warehouseId?: string) => {  
+  const submit = (warehouse: Warehouse, warehouseId?: string) => {
     !warehouseId ? insertWarehouse(warehouse) : updateWarehouse(warehouse, warehouseId)
   }
 
   return {
+    categories,
     warehouse,
     errors,
     
