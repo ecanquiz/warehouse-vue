@@ -2,7 +2,8 @@
 
 export type Warehouse = {
   id?: string | number;
-  uuid?: any; 
+  uuid?: any;
+  code?: string; 
   name?: string; 
   description?: string; 
   
@@ -33,7 +34,8 @@ export type Rows = {
 }
 
 export type WarehouseRow = {
-  uuid?: any; 
+  uuid?: any;
+  code?: string; 
   name?: string; 
   description?: string; 
 }
@@ -46,6 +48,7 @@ export type Link = {
 
 export type StoreWarehouse = {
   uuid: string
+  code?: string;
   name: string
   loading: boolean
   error: string

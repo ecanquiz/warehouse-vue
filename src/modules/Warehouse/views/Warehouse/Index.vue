@@ -52,6 +52,9 @@ const {
                 <AppLink to="#" @click.prevent="setSort('uuid')">uuid</AppLink>
               </th-->
               <th class="">
+                <AppLink to="#" @click.prevent="setSort('code')">name</AppLink>
+              </th>
+              <th class="">
                 <AppLink to="#" @click.prevent="setSort('name')">name</AppLink>
               </th>
               <th class="">
@@ -74,6 +77,14 @@ const {
             <!--td class="">
               {{ row.uuid }}
             </td-->
+            <td class="">
+              <AppLink
+                class="text-indigo-600 hover:text-indigo-800 underline"
+                :to="{ name: 'warehouseEdit', params: { id: row.id }}"
+              >
+                {{ row.code }}
+              </AppLink>
+            </td>
             <td class="">
               <AppLink
                 class="text-indigo-600 hover:text-indigo-800 underline"
