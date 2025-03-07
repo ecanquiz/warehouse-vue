@@ -5,7 +5,7 @@ import WarehouseService from "../../services/Warehouse"
 import ArticleService from "../../services/Article"
 import type { Warehouse } from "../../types/Warehouse"
 
-export default (warehouseId?: string) => {
+export default (propsId?: string) => {
   const router = useRouter();
   
   const warehouse: Warehouse = reactive({
@@ -29,33 +29,36 @@ export default (warehouseId?: string) => {
 
     getError
   } = useHttp()
+
+  const {  
+    errors: loadErrors,
+    pending: loadPending,
+
+    getError: loadGetError
+  } = useHttp()
   
   onMounted(async () => {
-    if (warehouseId) {
-      pending.value = true
+    pending.value = true
 
-      ArticleService.getDistinctCategoriesByArticleDetail().then(response => {
-        categories.value = response.data.map( (r: optionsVueMultiselect) => ({ name: r, code: r }))
-      })
+    ArticleService.getDistinctCategoriesByArticleDetail().then(response => {
+      console.log(response)
+      categories.value = response.data.map((r: optionsVueMultiselect) => ({name: r, code: r}))
+    })
 
-      WarehouseService.getWarehouse(warehouseId)
+    if (propsId) {
+      WarehouseService.getWarehouse(propsId)
         .then((response) => { 
           // warehouse.uuid = response.data.data.uuid 
           warehouse.code = response.data.data.code 
           warehouse.name = response.data.data.name 
           warehouse.description = response.data.data.description 
-          warehouse.categories = JSON.parse(response.data.data.categories).map(r=> ({name: r, code: r})) 
-
-          console.log('dsfdgf', warehouse.categories )
+          warehouse.categories = JSON.parse(response.data.data.categories).map((r: optionsVueMultiselect) => ({name: r, code: r}))
         })
         .catch((err) => {        
           errors.value = getError(err)
         })
-        .finally(() => {
-          pending.value = false;
-        })
-    }    
-    
+    }
+    pending.value = false;
   })
 
   const insertWarehouse = async (warehouse: Warehouse) => {  
@@ -63,7 +66,7 @@ export default (warehouseId?: string) => {
     return WarehouseService.insertWarehouse(warehouse)
       .then((response) => {         
         alert( response.data.message )
-        router.push( { path: '/warehouses' } )
+        router.push( { path: `/warehouses/edit/${response.data.id}` } )
       })
       .catch((err) => {                
         console.log( err.response.data )
@@ -74,12 +77,12 @@ export default (warehouseId?: string) => {
       })
   }
 
-  const updateWarehouse = async (warehouse: Warehouse, warehouseId: string) => {
+  const updateWarehouse = async (warehouse: Warehouse) => {
     pending.value= true
-    return WarehouseService.updateWarehouse(warehouseId, warehouse)
+    return WarehouseService.updateWarehouse(propsId, warehouse)
       .then((response) => {
         alert( response.data.message )
-        router.push( { path: '/warehouses' } )
+        //router.push( { path: '/warehouses' } )
       })
       .catch((err) => {                
         console.log( err.response.data )
@@ -90,19 +93,39 @@ export default (warehouseId?: string) => {
       })
   }
   
-  const submit = (warehouse: Warehouse, warehouseId?: string) => {
-    !warehouseId ? insertWarehouse(warehouse) : updateWarehouse(warehouse, warehouseId)
+  const submit = (warehouse: Warehouse) => {
+    !propsId ? insertWarehouse(warehouse) : updateWarehouse(warehouse)
+  }
+
+  const loadArticles = (payload: {categories : string[]}) => {
+    pending.value= true
+    return WarehouseService.loadArticles(propsId, payload)
+      .then((response) => {
+        alert( response.data.message )
+        //router.push( { path: '/warehouses' } )
+      })
+      .catch((err) => {                
+        console.log( err.response.data )
+        errors.value = getError(err)
+      })
+      .finally(() => {
+        pending.value = false
+      })
   }
 
   return {
     categories,
     warehouse,
-    errors,
-    
+    errors,    
     pending,
     router,
+    loadErrors,
+    loadPending,
 
-    submit    
+    submit,
+    loadArticles   
   }
 
 }
+
+

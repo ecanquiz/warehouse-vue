@@ -17,7 +17,7 @@ const {
 
 
 const toString = (arr) => {
-  return JSON.parse(arr).toString().replace(/,/g, ", ");
+  return arr ? JSON.parse(arr).toString().replace(/,/g, ", ") : '';
 }
 </script>
 

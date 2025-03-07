@@ -25,11 +25,16 @@ export const getHelpWarehouses = () => {
   return Http.get(`/api/warehouses-help`);
 }
 
+export const loadArticles = (warehouseId: string, payload: {categories: string[]}) => {   
+  return Http.put(`/api/warehouses-load-articles/${warehouseId}`, payload);
+}
+
 export default {
   getWarehouses,
   getWarehouse,
   insertWarehouse,
   updateWarehouse,
   deleteWarehouse,
-  getHelpWarehouses
+  getHelpWarehouses,
+  loadArticles
 }
