@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from "vue"
+import { reactive, toRaw } from "vue"
 import VueMultiselect from 'vue-multiselect'
 import type { Warehouse } from "../../types/Warehouse"
 // import type Errors from "../types/Errors"
@@ -9,18 +9,20 @@ type optionsVueMultiselect = {
     code: string
 }[]
 
-
 const props = defineProps<{
-  id?: string
+  //id?: string
   warehouse: Warehouse
   categories: optionsVueMultiselect
    
   pending: boolean
   errors: any
+  loadPending: boolean
+  loadErrors: any
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit', warehouse: Warehouse, warehouseId?: string): void
+  (e: 'submit', warehouse: Warehouse): void
+  (e: 'loadArticles', payload: {categories: string[]}): void
 }>()
 
 const form: Warehouse = reactive(props.warehouse)
@@ -31,7 +33,11 @@ const submit = async () => {
     name: form.name,
     description: form.description,
     categories: form.categories.map(r => r.name)    
-  }, props.id)
+  })
+}
+
+const loadArticles = () => {
+  emit('loadArticles', {categories: form.categories.map(r => r.name)});
 }
 </script>
 
@@ -100,6 +106,13 @@ const submit = async () => {
       type="submit"
       :text="pending ? 'Guardando...' : 'Guardar'"
       :isDisabled='pending'
+    />
+
+    <AppBtn
+      type="button"
+      :text="loadPending ? 'Cargando artículos...' : 'Cargar artículos'"
+      :isDisabled='loadPending'
+      @click="loadArticles"
     />
   </div>
 </form>  

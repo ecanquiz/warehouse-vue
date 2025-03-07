@@ -8,12 +8,15 @@ const props = defineProps<{ id?: string }>()
 const {
   categories,
   warehouse,
-  errors,
-  
+  errors,  
   pending,
   router,
+  loadErrors,
+  loadPending,
 
-  submit    
+
+  submit,
+  loadArticles   
 } = useCreateOrEdit(props.id)
 </script>
     
@@ -29,11 +32,13 @@ const {
       <FormCreateOrEdit
         class="p-5 border rounded shadow"
         @submit='submit'
-        :id="props.id"
+        @loadArticles="loadArticles"
         :categories="categories"
         :warehouse='warehouse'
         :pending='pending'
-        :errors='errors'                
+        :errors='errors'
+        :loadPending='loadPending'
+        :loadErrors='loadErrors'           
       />
       </div>
   </transition>

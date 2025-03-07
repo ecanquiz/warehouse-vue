@@ -4,13 +4,13 @@ import AppPageHeader from "@/components/AppPageHeader.vue"
 import { useRouter } from 'vue-router'
 
 
-const TabProduct = defineAsyncComponent(() => import('../../components/Warehouse/TabWarehouse.vue'))
-const TabPresentation = defineAsyncComponent(() => import('../../components/Warehouse/TabArticle.vue'))
+const TabWarehouse = defineAsyncComponent(() => import('../../components/Warehouse/TabWarehouse.vue'))
+const TabArticle = defineAsyncComponent(() => import('../../components/Warehouse/TabArticle.vue'))
 
 const props = defineProps<{ id?: string }>()
 const tabs = [
-  { component: TabProduct, title: "Almacén" },
-  { component: TabPresentation, title: "Artículos" }//,
+  { component: TabWarehouse, title: "Almacén" },
+  { component: TabArticle, title: "Artículos" }//,
 ]
 const currentTab = shallowRef(tabs[0])
 const router = useRouter();  
