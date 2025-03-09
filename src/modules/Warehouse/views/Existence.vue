@@ -39,10 +39,11 @@ const {
       <table class="table-data">
         <thead>
           <tr class="">            
-              <th class=""><AppLink to="#" @click.prevent="setSort('id')">Id</AppLink></th>
-              <th class=""><AppLink to="#" @click.prevent="setSort('int_cod')">Código Interno</AppLink></th>
+              <!--th class=""><AppLink to="#" @click.prevent="setSort('id')">Id</AppLink></th-->
+              <th class=""><AppLink to="#" @click.prevent="setSort('warehouse_code')">Código Almacén</AppLink></th>
+              <th class=""><AppLink to="#" @click.prevent="setSort('warehouse')">Nombre Almacén</AppLink></th>
+              <th class=""><AppLink to="#" @click.prevent="setSort('int_cod')">Código Artículo</AppLink></th>
               <th class=""><AppLink to="#" @click.prevent="setSort('name')">Artículo</AppLink></th>
-              <th class=""><AppLink to="#" @click.prevent="setSort('warehouse')">Almacén</AppLink></th>
               <th class=""><AppLink to="#" @click.prevent="setSort('stock_current')">Stock Actual</AppLink></th>
               <th class=""><AppLink to="#" @click.prevent="setSort('accumulated')">Acumulados Ùltimo Cierre</AppLink></th>
               <th class=""><AppLink to="#" @click.prevent="setSort('reverse_inputs')">Reverso Entradas</AppLink></th>
@@ -55,10 +56,11 @@ const {
         </thead>
         <tbody>
           <tr v-for="row in data.rows" :key="row.id" class="">
-            <td class="">{{ row.id }}</td>
+            <!--td class="">{{ row.id }}</td-->
+            <td class="">{{ row.warehouse_code }}</td>
+            <td class="">{{ row.warehouse }}</td>
             <td class="">{{ row.int_cod }}</td>
             <td class="">{{ row.name }}</td>
-            <td class="">{{ row.warehouse }}</td>            
             <td class="">{{ row.stock_current }}</td>
             <td class="">{{ row.accumulated }}</td>
             <td class="">{{ row.reverse_inputs }}</td>

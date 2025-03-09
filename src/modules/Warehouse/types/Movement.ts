@@ -26,6 +26,8 @@ export type Detail = {
     close:       string | null;
     id?:          string;
     int_cod:     string;
+    warehouse_code: string;
+    warehouse_name: string;
     movement_id?: string;
     name:        string;
     photo:       string;
