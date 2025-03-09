@@ -59,6 +59,8 @@ export default (movementId?: string) => {
           close: r.close,
           id: r.id,
           int_cod: r.int_cod,
+          warehouse_code: r.warehouse_code,
+          warehouse_name: r.warehouse_name,
           // movement_id: r.movement_id,
           name: r.name,
           photo: r.photo,

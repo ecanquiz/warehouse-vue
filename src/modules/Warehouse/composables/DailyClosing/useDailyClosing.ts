@@ -6,6 +6,7 @@ type xyz = {
   date_time: string;
   article_id: number;
   int_cod: string;
+  warehouse_code: string;
   name: string;
   accumulated: number;
   quantity_input: number;
