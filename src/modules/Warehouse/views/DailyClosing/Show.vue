@@ -52,13 +52,16 @@ const getTotalByArticle = (article: xyz) =>
       <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
         <tr>
           <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Fecha de cierre</th>
-          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Artículo</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Código del Almacén</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Nombre del Almacén</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Código del Artículo</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Nombre del Artículo</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Stock</th>
           <th class="px-6 py-3 text-center bg-base-200 text-center">Acumulados</th>
-          <th class="px-6 py-3 text-center bg-base-200 text-center">Entradas</th>
-          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Salidas</th>
-          <th class="px-6 py-3 text-center bg-base-200 text-center">Reversos de Entrada</th>
-          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Reversos de Salida</th>
-          <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Stock</th>
+          <th class="px-6 py-3 text-center bg-base-100 text-center">Entradas</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Salidas</th>
+          <th class="px-6 py-3 text-center bg-base-100 text-center">Reversos de Entrada</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Reversos de Salida</th>
         </tr>
       </thead>
       <tbody>      
@@ -66,26 +69,35 @@ const getTotalByArticle = (article: xyz) =>
           <td class="px-6 py-3 bg-gray-50 bg-base-200 text-center">
             {{detail.close}}
           </td>
-          <td class="px-6 py-3 bg-base-100 text-left">
-            {{detail.article_id}}-{{ detail.int_cod }}-{{ detail.name }}
+          <td class="px-6 py-3 bg-base-100 text-center">
+            {{detail.warehouse_code}}
+          </td>
+          <td class="px-6 py-3 bg-base-200 text-left">
+            {{detail.warehouse_name }}
+          </td>
+          <td class="px-6 py-3 bg-base-100 text-center">
+            {{ detail.int_cod }}
+          </td>
+          <td class="px-6 py-3 bg-base-200 text-left">
+            {{ detail.name }}
+          </td>
+          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">
+            {{ getTotalByArticle(detail) }}
           </td>
           <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">
             {{detail.accumulated}}
           </td>        
-          <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">
+          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">
             {{detail.quantity_input}}
           </td>
-          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">
+          <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">
             {{detail.quantity_output}}
           </td>
-          <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">
+          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">
             {{detail.quantity_reverse_input}}
           </td>
-          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">
-            {{detail.quantity_reverse_output}}
-          </td>
           <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">
-            {{ getTotalByArticle(detail) }}
+            {{detail.quantity_reverse_output}}
           </td>
         </tr>
       </tbody>
