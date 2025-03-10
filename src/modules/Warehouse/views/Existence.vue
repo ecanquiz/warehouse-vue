@@ -58,7 +58,7 @@ const {
           <tr v-for="row in data.rows" :key="row.id" class="">
             <!--td class="">{{ row.id }}</td-->
             <td class="">{{ row.warehouse_code }}</td>
-            <td class="">{{ row.warehouse }}</td>
+            <td class="">{{ row.warehouse_name}}</td>
             <td class="">{{ row.int_cod }}</td>
             <td class="">{{ row.name }}</td>
             <td class="">{{ row.stock_current }}</td>

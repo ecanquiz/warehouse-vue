@@ -95,6 +95,20 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
           <th class="px-4 py-1">
             <AppBtn
               class="bg-base-100 hover:text-gray-500"
+              @click.prevent="setSort('warehouses.code')">
+                CÓDIGO DEL ALMACÉN
+            </AppBtn>
+          </th>
+          <th class="px-4 py-1">
+            <AppBtn
+              class="bg-base-100 hover:text-gray-500"
+              @click.prevent="setSort('warehouses.name')">
+              ALMACÉN
+            </AppBtn>
+          </th>
+          <th class="px-4 py-1">
+            <AppBtn
+              class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('article_warehouse.int_cod')">
                 CÓDIGO INTERNO
             </AppBtn>
@@ -106,17 +120,11 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
               NOMBRE DEL ARTÍCULO
             </AppBtn>
           </th>
-          <th class="px-4 py-1">
-            <AppBtn
-              class="bg-base-100 hover:text-gray-500"
-              @click.prevent="setSort('warehouses.name')">
-              ALMACÉN
-            </AppBtn>
-          </th>       
-          <th class="px-4 py-1">Precio</th>
+          <th class="px-4 py-1">Existencia</th> 
           <th class="px-4 py-1">Min</th>
           <th class="px-4 py-1">Max</th>
-          <th class="px-4 py-1">Existencia</th>
+          <th class="px-4 py-1">Decripción</th>
+
         </tr>
       </thead>
       <tbody>
@@ -151,13 +159,14 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
               class="w-7 h-7 m-auto fill-current hover:cursor-pointer"              
             />
           </td-->
-          <td class="px-4 py-1">{{presentation.int_cod}}</td>
+          <td class="px-4 py-1 text-center">{{presentation.warehouse_code}}</td>
+          <td class="px-4 py-1 text-justify">{{presentation.warehouse_name}}</td>
+          <td class="px-4 py-1 text-center">{{presentation.int_cod}}</td>
           <td class="px-4 py-1 text-justify">{{presentation.name}}</td>
-          <td class="px-4 py-1 text-justify">{{presentation.warehouse}}</td>
-          <td class="px-4 py-1 text-right">{{presentation.price}}</td>
+          <td class="px-4 py-1 text-right">{{presentation.stock_existence}}</td>
           <td class="px-4 py-1 text-right">{{presentation.stock_min}}</td>
           <td class="px-4 py-1 text-right">{{presentation.stock_max}}</td>
-          <td class="px-4 py-1 text-right">{{presentation.stock_existence}}</td>        
+          <td class="px-4 py-1 text-left">{{presentation.description}}</td>
         </tr>
       </tbody>
     </table>

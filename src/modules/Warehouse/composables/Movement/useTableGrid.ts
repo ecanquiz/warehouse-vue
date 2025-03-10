@@ -1,6 +1,6 @@
 import { onMounted } from "vue"
 //import { getArticlesSearch } from '@/modules/Article/services/ArticleService'
-import { getArticlesSearch } from '@/modules/Warehouse/services/Article'
+import { getArticlesWarehouseSearch } from '@/modules/Warehouse/services/ArticleWarehouse'
 
 interface Data {
   rows: string[];
@@ -72,7 +72,7 @@ export default (data: Data): TableGrid => {
     data.sort = params.sort ?? ""
     data.direction = params.direction ?? ""
     
-    const {data: { rows }} = await getArticlesSearch(
+    const {data: { rows }} = await getArticlesWarehouseSearch(
       new URLSearchParams(data as unknown as Params).toString()
     )
     
