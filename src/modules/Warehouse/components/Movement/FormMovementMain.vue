@@ -19,8 +19,6 @@ const { movement: { main, details } }: {
 
 const { isReverse, v$, options, search } = useFormMovementMain()
 const onlyShow = main.id ? true : false;
-
-
 </script>
 
 <template>
