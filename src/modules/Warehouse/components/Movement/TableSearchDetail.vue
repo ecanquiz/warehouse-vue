@@ -43,6 +43,8 @@ const selectPresentation =  async(presentation: any, quantity: number=1 ) => {
     id: presentation.id,
     int_cod: presentation.int_cod,
     name: presentation.name,
+    warehouse_code: presentation.warehouse_code,
+    warehouse_name: presentation.warehouse_name,
     quantity
   })
   quantityPresentation.values[presentation.id] = quantity;
@@ -66,8 +68,6 @@ watch(details, (details) => {
     quantityPresentation.values[sp.id] = sp.quantity
   })
 }, { deep: true })
-
-const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${presentation.photo_path}`
 </script>
 
 <template>  

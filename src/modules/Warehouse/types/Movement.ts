@@ -30,8 +30,6 @@ export type Detail = {
     warehouse_name: string;
     movement_id?: string;
     name:        string;
-    photo:       string;
-    price:       string;
     quantity:    number;
     status:      number;
     stock_max:   number;

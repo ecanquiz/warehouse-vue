@@ -54,21 +54,18 @@ export default (movementId?: string) => {
         movement.main.support_number = response[0].data.data.support_number
         movement.main.support_date = response[0].data.data.support_date
         
-        movement.details = response[1].data.map((r:any) => ({
-          article_id: r.article_id,
-          close: r.close,
-          id: r.id,
-          int_cod: r.int_cod,
-          warehouse_code: r.warehouse_code,
-          warehouse_name: r.warehouse_name,
-          // movement_id: r.movement_id,
-          name: r.name,
-          photo: r.photo,
-          price: r.price,
-          quantity: r.quantity,
-          status: r.status,
-          stock_max: r.stock_max,
-          stock_min: r.stock_min
+        movement.details = response[1].data.map((detail: Detail) => ({
+          article_id: detail.article_id,
+          close: detail.close,
+          id: detail.id,
+          int_cod: detail.int_cod,
+          warehouse_code: detail.warehouse_code,
+          warehouse_name: detail.warehouse_name,
+          name: detail.name,
+          quantity: detail.quantity,
+          status: detail.status,
+          stock_max: detail.stock_max,
+          stock_min: detail.stock_min
         }))
       })
       .catch((err) => {        
@@ -99,31 +96,12 @@ export default (movementId?: string) => {
 
   const updateDetails = (details: Detail[]) => {
     movement.details = details.map((detail: Detail) => ({
-
-      /*
-      article_id: detail.article_id,
-      close: detail.close,
-      id: detail.id,
-      int_cod: detail.int_cod,
-      //movement_id: detail.movement_id,
-      name: detail.name,
-      photo: detail.photo,
-      price: detail.price,
-      quantity: detail.quantity,
-      status: detail.status,
-      stock_max: detail.stock_max,
-      stock_min: detail.stock_min
-       */
-
-
-     //article_id: detail.article_id,
       close: detail.close,
       id: detail.article_id,
       int_cod: detail.int_cod,
-      //movement_id: detail.movement_id,
       name: detail.name,
-      photo: detail.photo,
-      price: detail.price,
+      warehouse_code: detail.warehouse_code,
+      warehouse_name: detail.warehouse_name,
       quantity: detail.quantity,
       status: detail.status,
       stock_max: detail.stock_max,
