@@ -31,7 +31,8 @@ const getSearch = (link) => emits("getSearch", { page: link.url.split("page=")[1
         v-html=link.label
       ></RouterLink-->
       <button
-        v-if="link.url !== null"        
+        v-if="link.url !== null"
+        type="button"      
         class="mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-base-200 focus:border-indigo-500 focus:text-indigo-500"
         :class="{ 'bg-base-100': link.active, 'ml-auto': link.label === 'Next' }"
         @click="getSearch(link)"

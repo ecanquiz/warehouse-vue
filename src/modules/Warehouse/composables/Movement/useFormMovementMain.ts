@@ -40,26 +40,8 @@ export default () => {
     main.support_type_id = "8"
   }
 
-  /*const form = reactive({
-    type_id: main.type_id, 
-    number: main.number, 
-    date_time: main.date_time, 
-    subject: main.subject, 
-    description: main.description, 
-    observation: main.observation,     
-    support_type_id: main.support_type_id, 
-    support_number: main.support_number, 
-    support_date: main.support_date   
-  });*/
-
   const rules = computed(() => {
     return {
-      //type_id: {
-      //  required: helpers.withMessage("Campo requerido", required),
-      //},
-      //number: {
-      //  required: helpers.withMessage("Campo requerido", required),
-      //},
       date_time: {
         required: helpers.withMessage("Campo requerido", required),
       },

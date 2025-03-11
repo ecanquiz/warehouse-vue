@@ -3,20 +3,20 @@
 import { reactive, watch, inject} from "vue"
 import useTableGrid from "@/modules/Warehouse/composables/Movement/useTableGrid"
 import AppPaginationC from "@/components/AppPaginationC.vue";
-//import IconCamera from "@/components/icons/menu/icon-products.vue"
-//import type { ArticleDetail } from "@/modules/Article/types/Article/ArticleDetail";
+import type { Movement, Detail } from '../../types/Movement';
+import type { Article, QtyArticle } from '../../types/Article';
 
 const { movement: { details } }: {
-  movement: any //Movement
+  movement: Movement
 } = inject('movement');
 
 const emits = defineEmits<{
-  (e: 'selectPresentation', article_detailId: object): void
-  (e: 'qtyPresentation', article_detailId: object): void
+  (e: 'selectArticle', article: Article): void
+  (e: 'qtyArticle', qtyArticle: QtyArticle): void
 }>()
 
-const selectedPresentation = reactive([])
-const quantityPresentation = reactive([])
+const selectedArticle = reactive({})
+const quantityArticle = reactive({})
   
 const data = reactive({
   rows: [],
@@ -33,20 +33,22 @@ const {
   setSort, 
 } = useTableGrid(data)
 
-const classTr = (index) => {
+const classTr = (index: number): string => {
   let num = (index%2 == 1) ? '100' : '200'
   return  `bg-base-${num}`
 }
 
-const selectPresentation =  async(presentation: any, quantity: number=1 ) => {
-  emits("selectPresentation", {
-    id: presentation.id,
-    int_cod: presentation.int_cod,
-    name: presentation.name,
+const selectArticle =  async(article: Article, quantity: number = 1 ) => {
+  emits("selectArticle", {
+    id: article.id,
+    warehouse_code: article.warehouse_code,
+    warehouse_name: article.warehouse_name,
+    int_cod: article.int_cod,
+    name: article.name,
     quantity
   })
-  quantityPresentation.values[presentation.id] = quantity;
-  selectedPresentation[presentation.id] = !selectedPresentation[presentation.id];
+  quantityArticle[article.id] = !selectedArticle[article.id] === false ? 0 : quantity;
+  selectedArticle[article.id] = !selectedArticle[article.id];
 }
 
 const convertToNumber = (qtyStr: string): void|number => {
@@ -54,23 +56,21 @@ const convertToNumber = (qtyStr: string): void|number => {
   return (!qtyNumber) ? alert("Error: Ingrese números") : qtyNumber; 
 }
 
-const setQuantity = (presentationId): void => {
+const setQuantity = (articleId: string): void => {
   const qtyStr: string = prompt('Por favor ingrese la cantidad') 
   const qtyNumber: void|number = convertToNumber(qtyStr)
   if (qtyNumber)
-    emits("qtyPresentation", { id: presentationId , qty: qtyNumber })
+    emits("qtyArticle", { id: articleId , qty: qtyNumber })
 }
 
-watch(details, (details) => {
-  details.forEach((sp)=> {
-    quantityPresentation.values[sp.id] = sp.quantity
+watch(details as Detail[], (details: Detail[]) => {
+  details.forEach((detail: Detail )=> {
+    quantityArticle[detail.id] = detail.quantity
   })
 }, { deep: true })
-
-const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${presentation.photo_path}`
 </script>
 
-<template>  
+<template>
   <div class="overflow-x-auto panel">
     <div class="flex justify-between items-center">
       <div class="flex items-center">
@@ -91,7 +91,6 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
       <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
         <tr class="bg-base-100">
           <th class="px-4 py-1">Acción(es)</th>
-          <!--th class="px-4 py-1">Imagen</th-->
           <th class="px-4 py-1">
             <AppBtn
               class="bg-base-100 hover:text-gray-500"
@@ -128,45 +127,34 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(presentation, index) in data.rows" :key="index" :class="classTr(index)">
+        <tr v-for="(article, index) in data.rows" :key="index" :class="classTr(index)">
           <td class="px-4 py-1">
             <div class="flex items-center space-x-1">
-              <label>Seleccionar</label>      
+              <label>Seleccionar</label>
               <input
                 class="my-3"
                 type="checkbox"
-                v-model="selectedPresentation[presentation.id]"
-                :value="presentation.id"
-                @click="selectPresentation(presentation, 1)"
+                v-model="selectedArticle[article.id]"
+                :value="article.id"
+                @click="selectArticle(article, 1)"
               />
                         
               <AppBtn
-                v-show="selectedPresentation[presentation.id]"
-                @click="setQuantity(presentation.id)"
+                v-show="selectedArticle[article.id]"
+                @click="setQuantity(article.id)"
                 type="button"
                 class="btn btn-primary btn-xs"
-              >ModQty|{{ quantityPresentation.values[presentation.id]}}</AppBtn>
+              >ModQty|{{ quantityArticle[article.id]}}</AppBtn>
             </div>
           </td>
-          <!--td class="px-4 py-1">
-            <img
-              v-if="presentation.photo_path"
-              class="m-auto hover:cursor-pointer w-7 h-7"
-              :src=imgPath(presentation)              
-            />
-            <IconCamera
-              v-else
-              class="w-7 h-7 m-auto fill-current hover:cursor-pointer"              
-            />
-          </td-->
-          <td class="px-4 py-1 text-center">{{presentation.warehouse_code}}</td>
-          <td class="px-4 py-1 text-justify">{{presentation.warehouse_name}}</td>
-          <td class="px-4 py-1 text-center">{{presentation.int_cod}}</td>
-          <td class="px-4 py-1 text-justify">{{presentation.name}}</td>
-          <td class="px-4 py-1 text-right">{{presentation.stock_existence}}</td>
-          <td class="px-4 py-1 text-right">{{presentation.stock_min}}</td>
-          <td class="px-4 py-1 text-right">{{presentation.stock_max}}</td>
-          <td class="px-4 py-1 text-left">{{presentation.description}}</td>
+          <td class="px-4 py-1 text-center">{{article.warehouse_code}}</td>
+          <td class="px-4 py-1 text-justify">{{article.warehouse_name}}</td>
+          <td class="px-4 py-1 text-center">{{article.int_cod}}</td>
+          <td class="px-4 py-1 text-justify">{{article.name}}</td>
+          <td class="px-4 py-1 text-right">{{article.stock_existence}}</td>
+          <td class="px-4 py-1 text-right">{{article.stock_min}}</td>
+          <td class="px-4 py-1 text-right">{{article.stock_max}}</td>
+          <td class="px-4 py-1 text-left">{{article.description}}</td>
         </tr>
       </tbody>
     </table>
@@ -177,6 +165,5 @@ const imgPath = (presentation) => `${import.meta.env.VITE_APP_API_URL}/${present
     @getSearch="getSearch"
   />
   <div class="hidden">{{ details }}</div>
-
   </div>
 </template>

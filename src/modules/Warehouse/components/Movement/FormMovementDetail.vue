@@ -2,31 +2,31 @@
 import { inject } from "vue"
 import TableSearchDetail from "./TableSearchDetail.vue"
 import type { Movement, Detail } from '../../types/Movement';
+import type { Article, QtyArticle } from '../../types/Article';
 
 const { movement: { details } }: {
   movement: Movement
 } = inject('movement');
 
-const selectPresentation = (presentation) => {
-  const indexFound = details.findIndex((i)=> i.id === presentation.id);
+const selectArticle = (article: Article) => {
+  const indexFound = details.findIndex((i)=> i.id === article.id);
   (indexFound===-1) 
-    ? details.push(presentation)
+    ? details.push(article as Article as Detail)
     : details.splice(indexFound,1);
 }
 
-const qtyPresentation = (presentation) => {
-  const indexFound = details.findIndex((i)=> i.id === presentation.id);
+const qtyArticle = (qtyArticle: QtyArticle) => {
+  const indexFound = details.findIndex((i)=> i.id === qtyArticle.id);
   if (indexFound===-1) { return; } 
-  details[indexFound].quantity = presentation.qty 
+  details[indexFound].quantity = qtyArticle.qty 
 }
 </script>
 
 <template>
   <div class="overflow-x-auto demo-tab">
     <TableSearchDetail
-       :selectedPresentations="details"
-       @selectPresentation="selectPresentation"
-       @qtyPresentation="qtyPresentation"
+       @selectArticle="selectArticle"
+       @qtyArticle="qtyArticle"
      />      
   </div>
 </template>
