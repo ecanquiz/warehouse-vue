@@ -1,8 +1,8 @@
 import Http from "@/utils/Http";
 
-//export const getArticles = (query: string) => {  
-  //return Http.get(`/api/articles/?${query}`);
-//}
+export const getArticlesWarehouse = (query: string) => {  
+  return Http.get(`/api/articles-warehouse?${query}`);
+}
 
 export const getArticlesWarehouseSearch = (query: string) => {
   return Http.get(`/api/articles-warehouse-search?${query}`);
@@ -29,7 +29,7 @@ export const deleteArticle = (articleId: string) => {
 //}
 
 export default {
-  //getArticles,
+  getArticlesWarehouse,
   getArticlesWarehouseSearch,
   //getArticle,
   //insertArticle,

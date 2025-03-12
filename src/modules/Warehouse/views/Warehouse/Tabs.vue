@@ -5,12 +5,12 @@ import { useRouter } from 'vue-router'
 
 
 const TabWarehouse = defineAsyncComponent(() => import('../../components/Warehouse/TabWarehouse.vue'))
-const TabArticle = defineAsyncComponent(() => import('../../components/Warehouse/TabArticle.vue'))
+const TabArticleWarehouse = defineAsyncComponent(() => import('../../components/Warehouse/TabArticleWarehouse.vue'))
 
 const props = defineProps<{ id?: string }>()
 const tabs = [
   { component: TabWarehouse, title: "Almacén" },
-  { component: TabArticle, title: "Artículos" }//,
+  { component: TabArticleWarehouse, title: "Artículos por Almacén" }//,
 ]
 const currentTab = shallowRef(tabs[0])
 const router = useRouter();  
