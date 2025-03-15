@@ -13,6 +13,7 @@ interface TableGrid {
   route: RouteLocationNormalizedLoaded;
   router: Router;
 
+  setLoad: (newParams: object) => void;
   setSearch: (e: Event) => void;
   setSort: (s: "asc" | "des") => void;
 }
@@ -22,13 +23,13 @@ export default (data: Data, path: string): TableGrid => {
   const route = useRoute()
 
   // search
-  let searchDebounceTimer: NodeJS.Timeout
+  let searchDebounceTimer: ReturnType<typeof setTimeout> // NodeJS.Timeout
 
   const setSearch = (e: Event): void => {
     // clear previous timer and set new
     clearTimeout(searchDebounceTimer)
     searchDebounceTimer = setTimeout(() => {
-      load({ search: (e.target as HTMLInputElement).value })
+      setLoad({ search: (e.target as HTMLInputElement).value })
     }, 300)
   }
 
@@ -39,17 +40,19 @@ export default (data: Data, path: string): TableGrid => {
     if (data.sort == s) {
       d = data.direction == "asc" ? "desc" : "asc";
     }
-    load({direction: d, sort: s})
+    setLoad({direction: d, sort: s})
   };
   
   // setLoad
-  const load = (newParams: object): void => {
+  const setLoad = (newParams: object): void => {
     const params = {
-      search: data.search || "",
-      sort: data.sort || "",
-      direction: data.direction || "",
-      ...newParams,
+      //search: data.search || "",
+      //sort: data.sort || "",
+      //direction: data.direction || "",
+      //...newParams,
     }
+    
+    Object.assign(params, newParams);
 
     router.push({
       path,
@@ -64,6 +67,7 @@ export default (data: Data, path: string): TableGrid => {
     route,
     router,
 
+    setLoad,
     setSearch,
     setSort,
   }

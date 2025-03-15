@@ -18,7 +18,7 @@ const {
 
 <template>
 <div>
-  <AppPageHeader> Artículos por Almacén </AppPageHeader>
+  <AppPageHeader> Artículos por almacén </AppPageHeader>
 
   <div class="flex space-x-2">
     <AppLink class="btn btn-primary" to="/article-warehouse/create">
@@ -106,7 +106,7 @@ const {
             </td>
           </tr>
           <tr v-if="data.rows.length === 0">
-            <td class="" colspan="4">ArticleWarehouse not found.</td>
+            <td class="" colspan="4">Artículos por almacén no encontrados.</td>
           </tr>
         </tbody>
       </table>

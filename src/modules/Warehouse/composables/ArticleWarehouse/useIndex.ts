@@ -1,5 +1,6 @@
-import { reactive, onMounted } from "vue"
+import { reactive, onMounted, watch } from "vue"
 import { onBeforeRouteUpdate } from "vue-router"
+import { useStoreWarehouse } from "@/modules/Warehouse/stores"
 import useTableGrid from "@/composables/useTableGrid"
 import useHttp from "@/composables/useHttp"
 import ArticleWarehouseService from "../../services/ArticleWarehouse"
@@ -7,12 +8,16 @@ import ArticleWarehouseService from "../../services/ArticleWarehouse"
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined
 
 export default () => {
+
+  const store = useStoreWarehouse ()
+
   const data = reactive({
     rows: [],
     links: [],
     search: "",
     sort: "",
-    direction: ""
+    direction: "",
+    uuid: ""
   })
 
   const {  
@@ -25,6 +30,7 @@ export default () => {
     route,
     router,
 
+    setLoad,
     setSearch,
     setSort, 
   } = useTableGrid(data, "/article-warehouse")
@@ -37,8 +43,8 @@ export default () => {
         data.links = response.data.rows.links
         data.search = response.data.search
         data.sort = response.data.sort
-        data.direction = response.data.direction  
-        //console.log('dfgdfgdata', data)    
+        data.direction = response.data.direction
+        data.uuid = response.data.uuid
       })
       .catch((error) => {
         console.log(error)
@@ -72,10 +78,16 @@ export default () => {
   })
 
   onMounted(() => {
+    setLoad({ uuid: store.uuid})
     getArticleWarehouses(
       new URLSearchParams(route.query as Params).toString()
     )
   })
+
+  watch(
+    () => store.uuid,
+    (uuid) => setLoad({ uuid: store.uuid })
+  )
 
   return {
     errors,
