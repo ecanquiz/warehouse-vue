@@ -6,9 +6,10 @@ import useCreateOrEdit from "../../composables/ArticleWarehouse/useCreateOrEdit"
 const props = defineProps<{ id?: string }>()
 
 const {
-  article_warehouse,
+  //article_warehouse,
+  articles,
   errors,
-  warehouses,
+  //warehouses,
   pending,
   router,
 
@@ -18,11 +19,11 @@ const {
     
 <template>
 <div>
-  <AppPageHeader>Artículos por Almacén / {{ !props.id ? "Crear" : "Editar" }}</AppPageHeader>
+  <AppPageHeader>Artículos por almacén / {{ !props.id ? "Crear" : "Editar" }}</AppPageHeader>
   <transition name="fade" mode="out-in">
     <AppPageHeader
       message="pending..."
-      v-if="pending && !article_warehouse"
+      v-if="pending"
       key="pending"
     />
     <div v-else class="panel mt-6 p-4">           
@@ -35,7 +36,16 @@ const {
         </button>
       </div>
       <div class="panel mt-6">
-        <FormCreateOrEdit
+
+      <ul>
+        <li v-for="article in articles" :key="articles.id">
+         {{ article.id }} | {{ article.int_cod }} | {{ article.name }} | {{ article.description }}
+
+        </li>
+
+      </ul>
+        
+        <!--FormCreateOrEdit
           class="p-5 border rounded shadow"
           @submit='submit'
           :id="props.id"
@@ -43,7 +53,7 @@ const {
           :pending='pending'
           :errors='errors'
           :warehouses="warehouses"        
-        />
+        /-->
       </div>
     </div>
   </transition>

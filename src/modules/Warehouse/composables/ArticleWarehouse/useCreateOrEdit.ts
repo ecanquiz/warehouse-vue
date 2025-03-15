@@ -1,6 +1,7 @@
 import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useHttp from "@/composables/useHttp"; //foreign_table_name
+import ArticleService from "../../services/Article"
 import ArticleWarehouseService from "../../services/ArticleWarehouse"
 import WarehouseService from  "../../services/Warehouse"
 import type { ArticleWarehouse } from "../../types/ArticleWarehouse"
@@ -9,17 +10,7 @@ import type { Warehouse } from  "../../types/Warehouse"
 export default (article_warehouseId?: string) => {
   const router = useRouter();
   
-  const article_warehouse: ArticleWarehouse = reactive({
-    article_id: "", 
-    warehouse_uuid: "", 
-    stock_min: "", 
-    stock_max: "", 
-    status: "", 
-    id_user_insert: "", 
-    id_user_update: "", 
-  })
-
-  const warehouses = ref<Warehouse[]>()
+  const articles: any = ref([])
   
   const {  
     errors,
@@ -29,7 +20,19 @@ export default (article_warehouseId?: string) => {
   } = useHttp()
   
   onMounted(async () => {
-    if (article_warehouseId) {
+
+    pending.value = true
+    
+    ArticleService.getArticlesByCategories()
+      .then((response) => {
+        articles.value=response.data
+      })
+      .catch((error) => {
+        console.error(error);        
+      })
+      pending.value = false
+
+    /*if (article_warehouseId) {
       pending.value = true
       ArticleWarehouseService.getArticleWarehouse(article_warehouseId)
         .then((response) => { 
@@ -47,9 +50,9 @@ export default (article_warehouseId?: string) => {
         .finally(() => {
           pending.value = false;
         })
-    }    
+    }*/
     
-    pending.value = true
+    /*pending.value = true
     WarehouseService.getHelpWarehouses()
       .then((response) => {
         warehouses.value = response.data
@@ -59,10 +62,10 @@ export default (article_warehouseId?: string) => {
        })
        .finally(() => {
          pending.value = false
-       })
+       })*/
   })
 
-  const insertArticleWarehouse = async (article_warehouse: ArticleWarehouse) => {  
+  /*const insertArticleWarehouse = async (article_warehouse: ArticleWarehouse) => {  
     pending.value = true
     return ArticleWarehouseService.insertArticleWarehouse(article_warehouse)
       .then((response) => {         
@@ -76,9 +79,9 @@ export default (article_warehouseId?: string) => {
       .finally(() => {
         pending.value = false
       })
-  }
+  }*/
 
-  const updateArticleWarehouse = async (article_warehouse: ArticleWarehouse, article_warehouseId: string) => {
+  /*const updateArticleWarehouse = async (article_warehouse: ArticleWarehouse, article_warehouseId: string) => {
     pending.value= true
     return ArticleWarehouseService.updateArticleWarehouse(article_warehouseId, article_warehouse)
       .then((response) => {
@@ -92,16 +95,17 @@ export default (article_warehouseId?: string) => {
       .finally(() => {
         pending.value = false
       })
-  }
+  }*/
   
   const submit = (article_warehouse: ArticleWarehouse, article_warehouseId?: string) => {  
-    !article_warehouseId ? insertArticleWarehouse(article_warehouse)  : updateArticleWarehouse(article_warehouse, article_warehouseId)
+    //!article_warehouseId ? insertArticleWarehouse(article_warehouse)  : updateArticleWarehouse(article_warehouse, article_warehouseId)
   }
 
   return {
-    article_warehouse,
+    //article_warehouse,
+    articles,
     errors,
-    warehouses,
+    //warehouses,
     pending,
     router,
 
