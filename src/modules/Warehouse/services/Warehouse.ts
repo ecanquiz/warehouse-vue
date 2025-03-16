@@ -9,6 +9,10 @@ export const getWarehouse = (warehouseId: string) => {
   return Http.get(`/api/warehouses/${warehouseId}`);
 }
 
+export const getWarehouseByUuid = (warehouseUuid: string) => { 
+  return Http.get(`/api/warehouses/${warehouseUuid}/uuid`);
+}
+
 export const insertWarehouse = (payload: Warehouse) => {   
   return Http.post("/api/warehouses", payload);
 }
@@ -32,6 +36,7 @@ export const loadArticles = (warehouseId: string, payload: {categories: string[]
 export default {
   getWarehouses,
   getWarehouse,
+  getWarehouseByUuid,
   insertWarehouse,
   updateWarehouse,
   deleteWarehouse,
