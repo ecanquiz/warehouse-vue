@@ -1,5 +1,6 @@
 import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
 import useHttp from "@/composables/useHttp"; //foreign_table_name
 import ArticleService from "../../services/Article"
 import ArticleWarehouseService from "../../services/ArticleWarehouse"
@@ -8,6 +9,7 @@ import type { ArticleWarehouse } from "../../types/ArticleWarehouse"
 import type { Warehouse } from  "../../types/Warehouse"
 
 export default (article_warehouseId?: string) => {
+  const storeWarehouse = useStoreWarehouse()
   const router = useRouter();
   
   const articles: any = ref([])
@@ -22,6 +24,18 @@ export default (article_warehouseId?: string) => {
   onMounted(async () => {
 
     pending.value = true
+
+    const x = await WarehouseService.getWarehouseByUuid(storeWarehouse.uuid)
+      .then((response) => {
+        return response.data
+      })
+      .catch((error) => {
+        console.error(error);        
+      })
+      pending.value = false
+      pending.value = true
+
+      console.log(x)
     
     ArticleService.getArticlesByCategories()
       .then((response) => {
