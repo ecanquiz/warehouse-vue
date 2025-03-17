@@ -20,8 +20,8 @@ export const getArticlesSearch = (query: string) => {
   //return Http.get(`/api/articles/${articleId}`);
 //}
 
-export const getArticlesByCategories = () => { 
-  return Http.get(`/api/articles-by-categories`);
+export const getArticlesByCategories = (categories: string = "[]") => { 
+  return Http.get(`/api/articles-by-categories?categories=${categories}`);
 }
 
 /*export const insertArticle = (payload: Article) => {   
