@@ -12,16 +12,16 @@ export const getDistinctCategoriesByArticleDetail = () => {
   //return Http.get(`/api/articles/?${query}`);
 //}
 
-export const getArticlesSearch = (query: string) => {
-  return Http.get(`/api/articles-search?${query}`);
-}
+//export const getArticlesSearch = (query: string) => {
+//  return Http.get(`/api/articles-search?${query}`);
+//}
  
 //export const getArticle = (articleId: string) => { 
   //return Http.get(`/api/articles/${articleId}`);
 //}
 
-export const getArticlesByCategories = (categories: string = "[]") => { 
-  return Http.get(`/api/articles-by-categories?categories=${categories}`);
+export const getArticlesSearchByCategories = (query: string, categories: string = "[]") => { 
+  return Http.get(`/api/articles-search-by-categories?${query}`);
 }
 
 /*export const insertArticle = (payload: Article) => {   
@@ -43,7 +43,7 @@ export const deleteArticle = (articleId: string) => {
 export default {
   //getArticles,
   getDistinctCategoriesByArticleDetail,
-  getArticlesByCategories,
+  getArticlesSearchByCategories,
   //getArticlesSearch,
   //getArticle,
   //insertArticle,
