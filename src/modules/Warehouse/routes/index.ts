@@ -136,17 +136,5 @@ export default [{
     name: "article-warehouse",
     meta: { middleware: [auth, admin] },
     component: () => import("@/modules/Warehouse/views/ArticleWarehouse/Index.vue").then(m => m.default)
-}, {
-    path: "/article-warehouse/create",
-    name: "article-warehouseCreate",
-    meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/ArticleWarehouse/CreateOrEdit.vue").then(m => m.default),
-    props: true
-}, {
-    path: "/article-warehouse/edit/:id(\\d+)",
-    name: "article-warehouseEdit",
-    meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/ArticleWarehouse/CreateOrEdit.vue").then(m => m.default),
-    props: true
 }]
 

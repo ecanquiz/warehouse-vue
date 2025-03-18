@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {reactive} from "vue"
-import AppPageHeader from "@/components/AppPageHeader.vue";
-import FormCreateOrEdit from "../../components/ArticleWarehouse/FormCreateOrEdit.vue";
-import useCreateOrEdit from "../../composables/ArticleWarehouse/useCreateOrEdit";
+import useArticleSearch from "../../composables/ArticleWarehouse/useArticleSearch";
     
 const props = defineProps<{ id?: string }>()
 const selectedArticle = reactive({})
@@ -17,7 +15,7 @@ const {
   router,
 
   submit    
-} = useCreateOrEdit(props.id)
+} = useArticleSearch(props.id)
 
 const classTr = (index: number): string => {
   let num = (index%2 == 1) ? '100' : '200'
@@ -31,23 +29,9 @@ const selectArticle =  () => {
     
 <template>
 <div>
-  <AppPageHeader>Artículos por almacén / {{ !props.id ? "Crear" : "Editar" }}</AppPageHeader>
   <transition name="fade" mode="out-in">
-    <AppPageHeader
-      message="pending..."
-      v-if="pending"
-      key="pending"
-    />
-    <div v-else class="panel mt-6 p-4">           
-      <div  class="flex space-x-2">
-        <button
-          class="btn btn-primary mb-4"
-          @click="router.push({ path: '/article-warehouse' })"
-        >
-          Ver todos
-        </button>
-      </div>
-      <div class="panel mt-6">
+    <div class="panel mt-0 p-4">           
+
 
       <div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">     
     <table id="id_tab_presentacion" class="w-full text-sm text-left text-gray-500 dark:text-gray-400" width="100%">
@@ -106,7 +90,6 @@ const selectArticle =  () => {
           :warehouses="warehouses"        
         /-->
       </div>
-    </div>
   </transition>
 </div>
 </template>
