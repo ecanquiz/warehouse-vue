@@ -1,4 +1,4 @@
-import { reactive, onMounted, watch } from "vue"
+import { reactive, onMounted, watch, inject } from "vue"
 import { onBeforeRouteUpdate } from "vue-router"
 import { useStoreWarehouse } from "@/modules/Warehouse/stores"
 import useTableGrid from "@/composables/useTableGrid"
@@ -8,8 +8,11 @@ import ArticleWarehouseService from "../../services/ArticleWarehouse"
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined
 
 export default () => {
-
   const store = useStoreWarehouse ()
+
+  const {updateArticleIds}: {
+    updateArticleIds: (articleIds: string[]) => void
+  } = inject('articleIds');  
 
   const data = reactive({
     rows: [],
@@ -17,14 +20,11 @@ export default () => {
     search: "",
     sort: "",
     direction: "",
-    uuid: ""
+    uuid: "",
+    articleIds: []
   })
 
-  const {  
-    errors,
-
-    getError     
-  } = useHttp()
+  const {errors, getError} = useHttp()
 
   const {
     route,
@@ -45,6 +45,7 @@ export default () => {
         data.sort = response.data.sort
         data.direction = response.data.direction
         data.uuid = response.data.uuid
+        updateArticleIds(response.data.article_ids)
       })
       .catch((error) => {
         console.log(error)

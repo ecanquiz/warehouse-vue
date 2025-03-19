@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import {ref, provide} from 'vue';
 import ArticleWarehouseTable from '../../components/ArticleWarehouse/ArticleWarehouseTable.vue';
 import ArticleSearchTable from '../../components/ArticleWarehouse/ArticleSearchTable.vue';
 import usePanelToggle from '../../composables/ArticleWarehouse/usePanelToggle';
@@ -11,7 +11,16 @@ const {
 
     panelToogleDetail
 } = usePanelToggle()
+
 const componentKey = ref(0);
+
+const articleIds = ref<string[]>([]);
+
+const updateArticleIds = (arr: string[] = []): void => {
+  articleIds.value = arr
+}
+
+provide('articleIds', {articleIds, updateArticleIds});
 </script>
 
 <template>

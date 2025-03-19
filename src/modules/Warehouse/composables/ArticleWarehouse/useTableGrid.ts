@@ -1,4 +1,4 @@
-import { onMounted, watch } from "vue"
+import { onMounted, watch, inject } from "vue"
 import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
 import { getArticlesSearchByCategories } from "../../services/Article"
 import WarehouseService from  "../../services/Warehouse"
@@ -8,10 +8,15 @@ import type {
   Params, SetTimeout
 } from "@/types/TablaGrid"
 
-interface Data extends TableGridData { categories: string[]; }
+interface Data extends TableGridData {
+  categories: string[];
+  articleIds: string[]
+}
 
 export default (data: Data): TableGrid => {
   const storeWarehouse = useStoreWarehouse()
+
+  const {articleIds}: {articleIds: string[] } = inject('articleIds');
   
   onMounted(async () => await getSearch({
     page: "1",
@@ -58,11 +63,12 @@ export default (data: Data): TableGrid => {
       .then(response => response.data)
       .catch(error => {console.error(error);})    
 
-    data.page = params.page ?? "1"
-    data.search = params.search ?? ""
-    data.sort = params.sort ?? ""
-    data.direction = params.direction ?? ""
-    data.categories = categories ?? []
+    data.page = params.page ?? "1";
+    data.search = params.search ?? "";
+    data.sort = params.sort ?? "";
+    data.direction = params.direction ?? "";
+    data.categories = categories ?? [];
+    data.articleIds = articleIds ?? [];
     
     const {data: { rows }} = await getArticlesSearchByCategories(
       new URLSearchParams(data as unknown as Params).toString()
@@ -74,7 +80,8 @@ export default (data: Data): TableGrid => {
     data.search = data.search ?? ""
     data.sort = data.sort ?? ""
     data.direction = rows.direction ?? ""
-    data.categories = categories ?? [] 
+    data.categories = categories ?? []
+    data.articleIds = articleIds ?? [];
   }
 
   watch(() => storeWarehouse.uuid, () => setLoad({}))  

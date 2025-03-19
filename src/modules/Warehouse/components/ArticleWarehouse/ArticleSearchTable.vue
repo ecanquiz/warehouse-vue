@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, watch, inject} from "vue"
+import { reactive} from "vue"
 import useTableGrid from "@/modules/Warehouse/composables/ArticleWarehouse/useTableGrid"
 import AppPaginationC from "@/components/AppPaginationC.vue";
 import type { Movement, Detail } from '../../types/Movement';
@@ -22,7 +22,8 @@ const data = reactive({
   sort: "",
   direction: "",
   links: [],
-  categories: []
+  categories: [],
+  articleIds: []
 })
 
 const {
@@ -51,6 +52,7 @@ const selectArticle =  async(article: Article, quantity: number = 1 ) => {
 
 <template>
   <div class="overflow-x-auto panel">
+
     <div class="flex justify-between items-center">
       <div class="flex items-center">
         <div class="flex w-full bg-white shadow rounded">
