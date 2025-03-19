@@ -1,3 +1,4 @@
+// TODO: Check if it is working 
 import { onMounted, watch, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
@@ -22,7 +23,7 @@ export default (article_warehouseId?: string) => {
       .then(response => response.data)
       .catch(error => {console.error(error);})
     
-    ArticleService.getArticlesByCategories(categories)
+    ArticleService.getArticlesSearchByCategories(categories)
       .then(response => {articles.value=response.data;})
       .catch(error => {console.error(error);})
       pending.value = false
