@@ -14,8 +14,7 @@ interface Data extends TableGridData {
 }
 
 export default (data: Data): TableGrid => {
-  const storeWarehouse = useStoreWarehouse()
-
+  const store = useStoreWarehouse()
   const {articleIds}: {articleIds: string[] } = inject('articleIds');
   
   onMounted(async () => await getSearch({
@@ -36,16 +35,15 @@ export default (data: Data): TableGrid => {
     }, 300)
   }
 
-  // sort
-  const setSort = (s: "asc" | "des"): void => { // "s" is abbreviation of "sort"
-    // reverse direction if clicked twice on column
-    let d = "asc";         // "d" is abbreviation of "direction"
-    if (data.sort == s) {
-      d = data.direction == "asc" ? "desc" : "asc";
+  // sort (reverse direction if clicked twice on column)
+  const setSort = (sort: "asc" | "des"): void => {    
+    let direction = "asc";         
+    if (data.sort == sort) {
+      direction = data.direction == "asc" ? "desc" : "asc";
     } 
-    setLoad({direction: d, sort: s})
+    setLoad({direction, sort})
   };
-  
+
   // setLoad
   const setLoad = (newParams: object): void => {
     const params = {
@@ -59,7 +57,7 @@ export default (data: Data): TableGrid => {
   }
   
   const getSearch = async (params) => {    
-    const {categories} = await WarehouseService.getWarehouseByUuid(storeWarehouse.uuid)
+    const {categories} = await WarehouseService.getWarehouseByUuid(store.uuid)
       .then(response => response.data)
       .catch(error => {console.error(error);})    
 
@@ -84,7 +82,8 @@ export default (data: Data): TableGrid => {
     data.articleIds = articleIds ?? [];
   }
 
-  watch(() => storeWarehouse.uuid, () => setLoad({}))  
+  watch(() => store.uuid, () => setLoad({}))
+  watch(articleIds, () => setLoad({articleIds}))
 
   return {
     getSearch,

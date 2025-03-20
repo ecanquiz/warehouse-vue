@@ -113,6 +113,9 @@ const selectArticle =  async(article: Article, quantity: number = 1 ) => {
           <td class="px-4 py-1 text-justify">{{article.name}}</td>
           <td class="px-4 py-1 text-justify">{{article.description}}</td>
         </tr>
+        <tr v-if="data.rows.length === 0">
+            <td class="px-4 py-1 text-justify" colspan="4">Artículos no encontrados.</td>
+          </tr>
       </tbody>
     </table>
   </div>
