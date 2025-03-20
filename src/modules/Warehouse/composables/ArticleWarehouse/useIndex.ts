@@ -9,7 +9,6 @@ type Params =  string | string[][] | Record<string, string> | URLSearchParams | 
 
 export default () => {
   const store = useStoreWarehouse ()
-
   const {updateArticleIds}: {
     updateArticleIds: (articleIds: string[]) => void
   } = inject('articleIds');  
@@ -85,10 +84,7 @@ export default () => {
     )
   })
 
-  watch(
-    () => store.uuid,
-    (uuid) => setLoad({ uuid: store.uuid })
-  )
+  watch(() => store.uuid, uuid => setLoad({uuid: store.uuid}))
 
   return {
     errors,
