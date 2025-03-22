@@ -1,25 +1,19 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import type {RouteRecordRaw} from 'vue-router'
-import { computed } from "vue"
-import { useAuthStore } from '@/modules/Auth/stores'
+import {computed} from "vue"
+import {useAuthStore} from '@/modules/Auth/stores'
 import middlewarePipeline from "@/router/middlewarePipeline"
-import AuthRoutes from "@/modules/Auth/routes"
-import AuthorizationRoutes from "@/modules/Authorization/routes"
-import WarehouseRoutes from "@/modules/Warehouse/routes"
-import UserRoutes from "@/modules/User/routes"
+import type {RouteRecordRaw} from 'vue-router'
 
 const storeAuth = computed(() => useAuthStore())
 
-const routes: Array<RouteRecordRaw> = [
-  ...AuthRoutes.map(route => route),
-  ...AuthorizationRoutes.map(route => route),
-  ...UserRoutes.map(route => route),
-  ...WarehouseRoutes.map(route => route)
-]
+const routesModules = import.meta.glob('@/modules/**/routes/index.ts', {
+  eager: true,
+  import: 'default'
+})
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),  
-  routes,
+  routes: [] as Array<RouteRecordRaw>,
   scrollBehavior(to, from, savedPosition): any {
     if (savedPosition) {
       return savedPosition;
@@ -28,6 +22,12 @@ const router = createRouter({
     }
   },
 });
+
+Object.values(routesModules).forEach((routes: RouteRecordRaw[]) => 
+  routes.forEach((route: RouteRecordRaw) =>
+    router.addRoute(route)
+  )  
+)
 
 router.beforeEach((to, from, next) => {
   const middleware = to.meta.middleware;
