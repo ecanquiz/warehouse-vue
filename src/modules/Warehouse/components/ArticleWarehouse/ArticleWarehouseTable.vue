@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // @ts-nocheck
 import useIndex from "../../composables/ArticleWarehouse/useIndex";
-import AppPaginationB from "@/components/AppPaginationB.vue";
 
 const {
   errors,

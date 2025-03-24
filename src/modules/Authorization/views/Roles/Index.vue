@@ -2,10 +2,8 @@
 // @ts-nocheck
 import { onMounted, reactive } from "vue";
 import { onBeforeRouteUpdate } from 'vue-router' 
-import AppPaginationB from "@/components/AppPaginationB.vue";
-import AppPageHeader from "@/components/AppPageHeader.vue"
 import * as RoleService from "@/modules/Authorization/services/RoleService";
-import useTableGrid from "@/composables/useTableGrid";
+import useTableGrid from "@/core/composables/useTableGrid";
 import useRole from "./useRole";
 //import type User from "./User"
 

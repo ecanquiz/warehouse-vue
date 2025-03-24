@@ -1,5 +1,5 @@
 import { test, vi, expect } from 'vitest'
-import Http from '@/utils/Http';
+import Http from '@/core/utils/Http';
 import { updateUser } from '@/modules/Auth/services';
 
 test('should fetch update-user-profile via http-auth-service', () => {

@@ -1,8 +1,8 @@
 import { describe, it, vi, expect, afterEach,  afterAll} from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import router from '@/router'
-import Menu from '@/layouts/RecursiveMenu/Index.vue'
+import router from '@/core/router'
+import Menu from '@/core/layouts/RecursiveMenu/Index.vue'
 import data from "./data"
 import nav from "./nav"
 

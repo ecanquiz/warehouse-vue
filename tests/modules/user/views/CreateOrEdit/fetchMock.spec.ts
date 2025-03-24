@@ -1,5 +1,5 @@
 import { describe, it, vi, expect } from 'vitest'
-import Http from '@/utils/Http';
+import Http from '@/core/utils/Http';
 import UserService from "@/modules/User/services";
 
 describe('Users/CreateOrEdit Component',  () => {

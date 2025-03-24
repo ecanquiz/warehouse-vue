@@ -1,12 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppRadio from '@/components/AppRadio.vue'
-import AppRadioGroup from '@/components/AppRadioGroup.vue'
+import AppRadio from '@/core/components/AppRadio.vue'
+import AppRadioGroup from '@/core/components/AppRadioGroup.vue'
+import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
+
 
 describe('AppRadioGroup', () => {
   const factory = (props = {}, shallow = false ) => {
     return mount(AppRadioGroup, {
-      global: { components: { AppRadio } },
+      global: { components: { AppRadio, AppErrorMessage} },
       props: {
         name:'radioName',
         modelValue: '0', 

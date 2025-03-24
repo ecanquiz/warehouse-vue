@@ -3,9 +3,6 @@
 import ExistenceTable from "@/modules/Warehouse/components/Existence/Table.vue"
 //import useIndex from "@/modules/Warehouse/composables/Existence/useIndex";
 import useExistence from "@/modules/Warehouse/composables/Existence/useExistence"
-import AppPaginationB from "@/components/AppPaginationB.vue";
-import AppPageHeader from "@/components/AppPageHeader.vue"
-import AppBtn from "@/components/AppBtn.vue"
 
 const {
   errors,

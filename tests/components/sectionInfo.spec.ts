@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import AppSectionInfo from '@/components/AppSectionInfo.vue'
+import AppSectionInfo from '@/core/components/AppSectionInfo.vue'
 
 test('component must be mounted correctly', () => {
 

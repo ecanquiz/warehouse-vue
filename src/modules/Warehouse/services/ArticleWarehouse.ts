@@ -1,4 +1,4 @@
-import Http from "@/utils/Http";
+import Http from "@/core/utils/Http";
 import type { ArticleWarehouse } from "../types/ArticleWarehouse";
 
 export const getArticleWarehouses = (query: string) => {  

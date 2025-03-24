@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { AxiosInstance, AxiosResponse, AxiosError } from "axios";
-import type { Paiload } from "@/utils/Types"
+import type { Paiload } from "@/core/utils/Types"
 import type { Init } from "./Http";
 import init from "./init";
 

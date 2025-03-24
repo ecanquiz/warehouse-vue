@@ -1,4 +1,4 @@
-import Http from "@/utils/Http";
+import Http from "@/core/utils/Http";
 
 const path = "/api/roles"
 

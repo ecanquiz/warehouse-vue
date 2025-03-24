@@ -1,5 +1,5 @@
-import auth from "@/middleware/auth"
-import admin from "@/middleware/admin"
+import auth from "@/core/middleware/auth"
+import admin from "@/core/middleware/admin"
 
 export default [{
     path: "/inputs",

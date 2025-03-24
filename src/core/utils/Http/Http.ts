@@ -1,4 +1,4 @@
-import type { GenericObject } from "@/utils/Types"
+import type { GenericObject } from "@/core/utils/Types"
 import type { AxiosResponse } from "axios";
 
 export interface Init {  

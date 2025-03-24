@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import useUniqueId from '@/composables/useUniqueId'
-import type { Option } from '@/types/Option'
+import useUniqueId from '@/core/composables/useUniqueId'
+import type { Option } from '@/core/types/Option'
 
 withDefaults(defineProps<{
   label?: string 

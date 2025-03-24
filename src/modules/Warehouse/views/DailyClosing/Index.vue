@@ -2,9 +2,6 @@
 
 // @ts-nocheck
 import useIndex from "../../composables/DailyClosing/useIndex";
-import AppPaginationD from "@/components/AppPaginationD.vue";
-import AppPageHeader from "@/components/AppPageHeader.vue"
-import AppBtn from "@/components/AppBtn.vue"
 
 const {
   errors,
@@ -17,7 +14,6 @@ const {
   setSearch,
   setSort  
 } = useIndex()
-
 
 
 /*const title = computed(

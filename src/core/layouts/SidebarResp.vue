@@ -245,7 +245,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { useSidebar } from "@/composables/useSidebar";
+import { useSidebar } from "@/core/composables/useSidebar";
 
 export default defineComponent({
   setup() {

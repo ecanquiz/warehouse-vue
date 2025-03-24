@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { getError } from "@/utils/helpers";
+import { getError } from "@/core/utils/helpers";
 import FileService from "@/modules/Auth/services/FileService"
-import AppBtn from "@/components/AppBtn.vue";
-import AppFlashMessage from "@/components/AppFlashMessage.vue";
+import AppBtn from "@/core/components/AppBtn.vue";
+import AppFlashMessage from "@/core/components/AppFlashMessage.vue";
 
 export default defineComponent({
 

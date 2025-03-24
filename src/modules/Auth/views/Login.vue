@@ -1,5 +1,5 @@
 <script setup lang="ts">  
-  import IconLogo from "@/icons/IconLogo.vue"
+  import IconLogo from "@/core/icons/IconLogo.vue"
   import FormLogin from "../components/FormLogin.vue";
   import { useLogin } from '../composables/useLogin'  
 

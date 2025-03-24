@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { reactive} from "vue"
 import useTableGrid from "@/modules/Warehouse/composables/ArticleWarehouse/useTableGrid"
-import AppPaginationC from "@/components/AppPaginationC.vue";
 import type { Movement, Detail } from '../../types/Movement';
 import type { Article, QtyArticle } from '../../types/Article';
 

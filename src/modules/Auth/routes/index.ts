@@ -1,6 +1,6 @@
-import auth from "@/middleware/auth"
-import guest from "@/middleware/guest"
-import admin from "@/middleware/admin"
+import auth from "@/core/middleware/auth"
+import guest from "@/core/middleware/guest"
+import admin from "@/core/middleware/admin"
 
 export default [{
     path: "/",

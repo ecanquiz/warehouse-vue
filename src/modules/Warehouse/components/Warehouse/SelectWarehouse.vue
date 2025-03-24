@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
-import useHttp from '@/composables/useHttp';
+import useHttp from '@/core/composables/useHttp';
 import { getHelpWarehouses } from '@/modules/Warehouse/services/Warehouse';
 
 const {

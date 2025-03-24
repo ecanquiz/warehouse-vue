@@ -1,4 +1,4 @@
-import Http from "@/utils/Http";
+import Http from "@/core/utils/Http";
 
 export default {
   uploadFile(payload) {

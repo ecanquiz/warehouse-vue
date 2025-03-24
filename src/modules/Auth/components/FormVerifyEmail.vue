@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { useAuthStore } from '@/modules/Auth/stores'
-import { getError } from "@/utils/helpers"
+import { getError } from "@/core/utils/helpers"
 import * as AuthService from "@/modules/Auth/services"
-import AppBtn from "@/components/AppBtn.vue"
-import AppFlashMessage from "@/components/AppFlashMessage.vue"
 
 const store = useAuthStore()
 const error = ref(null)

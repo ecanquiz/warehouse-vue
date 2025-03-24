@@ -1,10 +1,19 @@
 import { describe, it, vi, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ProfileUpdatePassword from '@/modules/Auth/components/ProfileUpdatePassword.vue'
+import AppBtn from '@/core/components/AppBtn.vue'
+import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
 
 describe('ModuleAuthComponentProfileUpdatePassword.vue',  () => {
   it('should be called updatePassword with payload', async () => {
-    const wrapper = mount(ProfileUpdatePassword)
+    const wrapper = mount(ProfileUpdatePassword, {
+      global: {
+        components: {
+          AppBtn,
+          AppFlashMessage
+        }
+      }    
+    })
     const updatePasswordSpy = vi.spyOn(wrapper.vm, 'updatePassword');
     const payload = {
       current_password: 'current-password',

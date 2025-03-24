@@ -1,9 +1,9 @@
 import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { getError } from "@/utils/helpers";
+import { getError } from "@/core/utils/helpers";
 import * as MenuService from "@/modules/Authorization/services/MenuService";
 import * as RoleService from "@/modules/Authorization/services/RoleService";
-import type { Error } from "@/types/Error"
+import type { Error } from "@/core/types/Error"
 import type Role from "../../types/Role"
 
 export default (roleId?: string) => {

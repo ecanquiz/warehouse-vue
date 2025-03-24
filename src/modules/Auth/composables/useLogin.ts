@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/modules/Auth/stores'
-import { getError } from "@/utils/helpers";
+import { getError } from "@/core/utils/helpers";
 import * as AuthService from "@/modules/Auth/services";
 import type { FormLogin, StandaloneLogin } from '@/modules/Auth/types/Auth'
 

@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest'
 import { createPinia , setActivePinia} from 'pinia'
 import { useAuthStore } from '@/modules/Auth/stores' 
-import init from "@/utils/Http/init"; 
+import init from "@/core/utils/Http/init"; 
 
 test('should be initialized well', () => { 
   setActivePinia(createPinia())
