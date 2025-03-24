@@ -1,5 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
 import FormRegister from '@/modules/Auth/components/FormRegister.vue'
+import AppBtn from '@/core/components/AppBtn.vue'
+import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
+import AppInput from '@/core/components/AppInput.vue'
 
 const FlashMessage = {}
 
@@ -7,6 +10,7 @@ test('component must be mounted correctly', () => {
 
   const wrapper = shallowMount(FormRegister, {
     global: {
+      components: { AppBtn, AppFlashMessage, AppInput },
       stubs: { FlashMessage: true }
     }    
   })
@@ -27,3 +31,4 @@ test('component must be mounted correctly', () => {
   expect(confirmPasswordInput.exists()).toBe(true)
   
 })
+

@@ -1,7 +1,7 @@
 import { computed, reactive, onMounted } from "vue"
 import { onBeforeRouteUpdate, useRoute } from "vue-router"
-import useTableGrid from "@/composables/useTableGrid"
-import useHttp from "@/composables/useHttp"
+import useTableGrid from "@/core/composables/useTableGrid"
+import useHttp from "@/core/composables/useHttp"
 import DaylyClosingService from "../../services/DaylyClosing"
 
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined

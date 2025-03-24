@@ -1,7 +1,7 @@
 import { mount, flushPromises } from "@vue/test-utils"
 import { createPinia } from "pinia"
 import router from "../router"
-import AppLink from "@/components/AppLink.vue"
+import AppLink from "@/core/components/AppLink.vue"
 import Home from "@/modules/Auth/views/Home.vue"
 
 const FlashMessage = { }

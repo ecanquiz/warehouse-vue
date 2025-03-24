@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, provide } from 'vue';
 import { useRouter } from 'vue-router';
-import AppPageHeader from '@/components/AppPageHeader.vue';
 import PreDailyClosing from "../../components/DailyClosing/PreDailyClosing.vue";
 import FormDailyClosing from '../../components/DailyClosing/FormDailyClosing.vue';
 import useDailyClosings from '../../composables/DailyClosing/useDailyClosing';

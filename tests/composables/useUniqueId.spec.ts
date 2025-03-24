@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import useUniqueId from '@/composables/useUniqueId'
+import useUniqueId from '@/core/composables/useUniqueId'
 
 test('useUniqueId should be a counter', () => {
   const arr:string[] = []

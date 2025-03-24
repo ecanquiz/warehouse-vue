@@ -3,7 +3,6 @@
 // @ts-nocheck
 import useIndex from "../../composables/Movement/useIndex";
 import useMovementType from "../../composables/Movement/useMovementType";
-import AppPaginationD from "@/components/AppPaginationD.vue";
 
 const {
   errors,

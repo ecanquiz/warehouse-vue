@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import {computed} from "vue"
 import {useAuthStore} from '@/modules/Auth/stores'
-import middlewarePipeline from "@/router/middlewarePipeline"
+import middlewarePipeline from "@/core/router/middlewarePipeline"
 import type {RouteRecordRaw} from 'vue-router'
 
 const storeAuth = computed(() => useAuthStore())

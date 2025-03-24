@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { useRouter } from 'vue-router';
 import * as AuthService from "@/modules/Auth/services";
-import { getError } from "@/utils/helpers.js";
+import { getError } from "@/core/utils/helpers.js";
 
 interface UserAuthRegister{
   name: string;

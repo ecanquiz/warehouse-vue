@@ -1,4 +1,4 @@
-import Http from "@/utils/Http";
+import Http from "@/core/utils/Http";
 
 export const login = async <T>(payload: T) => {
   await Http.get("/sanctum/csrf-cookie");

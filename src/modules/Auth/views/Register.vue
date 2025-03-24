@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import IconLogo from "@/icons/IconLogo.vue"
+  import IconLogo from "@/core/icons/IconLogo.vue"
   import FormRegister from "../components/FormRegister.vue";
   import { useRegister } from '../composables/useRegister'
 

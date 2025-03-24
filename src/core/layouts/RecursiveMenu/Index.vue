@@ -3,7 +3,7 @@ import { useAuthStore } from "@/modules/Auth/stores/index"
 import { getAuthMenu } from "@/modules/Auth/services"
 import { ref, onMounted } from "vue"
 import TreeMenu from "./TreeMenu.vue"
-import type { Menu } from "@/types/Menu"
+import type { Menu } from "@/core/types/Menu"
 
 const menus = ref<Menu[]>([])
 const depth = ref(-1)

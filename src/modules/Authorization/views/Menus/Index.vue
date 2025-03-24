@@ -2,8 +2,8 @@
 // @ts-nocheck
 import { defineComponent } from 'vue'
 import * as MenuService from "@/modules/Authorization/services/MenuService"
-import AppPaginationB from "@/components/AppPaginationB.vue";
-import AppPageHeader from "@/components/AppPageHeader.vue"
+import AppPaginationB from "@/core/components/AppPaginationB.vue";
+import AppPageHeader from "@/core/components/AppPageHeader.vue"
 import Create from './Create.vue'
 import Edit from './Edit.vue'
 

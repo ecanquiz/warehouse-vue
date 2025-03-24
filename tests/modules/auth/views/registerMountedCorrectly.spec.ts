@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
-import router from '@/router'
-import AppLink from "@/components/AppLink.vue"
+import router from '@/core/router'
+import AppLink from "@/core/components/AppLink.vue"
 import RegisterIndex from '@/modules/Auth/views/Register.vue'
 
 beforeEach(() => { window.scrollTo = vi.fn() })

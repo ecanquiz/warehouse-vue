@@ -2,7 +2,6 @@
 //https://dev.to/razi91/vue-arrays-and-v-model-17e0
 import { reactive, watch, inject} from "vue"
 import useTableGrid from "@/modules/Warehouse/composables/Movement/useTableGrid"
-import AppPaginationC from "@/components/AppPaginationC.vue";
 import type { Movement, Detail } from '../../types/Movement';
 import type { Article, QtyArticle } from '../../types/Article';
 

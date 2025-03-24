@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent } from "vue"
 import { useRoute } from 'vue-router'
-import type { Menu } from "@/types/Menu"
+import type { Menu } from "@/core/types/Menu"
 
 const props = defineProps<{
   menu: Menu

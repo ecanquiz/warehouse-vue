@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppErrorMessage from '@/components/AppErrorMessage.vue'
-import AppSelect from '@/components/AppSelect.vue'
+import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
+import AppSelect from '@/core/components/AppSelect.vue'
 
 describe('AppSelect', () => {
   const factory = (props = {}, attrs = {} ) => {
@@ -89,7 +89,7 @@ describe('AppSelect', () => {
     
     expect(label.attributes()).toEqual({})
     expect(select.attributes()).toEqual(
-      { class: 'field', id: '6' } // uuid
+      { class: 'field', id: '6', value: '' } // uuid
     )
   })
   
@@ -100,7 +100,7 @@ describe('AppSelect', () => {
     
     expect(label.attributes()).toEqual({})
     expect(select.attributes()).toEqual(
-      { class: 'field', id: '7' } // uuid
+      { class: 'field', id: '7', value: '' } // uuid
     )
   })
   

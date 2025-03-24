@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useAuthStore } from "@/modules/Auth/stores"
-import { useSidebar } from "@/composables/useSidebar"
+import { useSidebar } from "@/core/composables/useSidebar"
 import Logout from "@/modules/Auth/components/Logout.vue"
 //import LoginIcon from "@/icons/LoginIcon.vue"
-import HomeIcon from "@/icons/HomeIcon.vue"
+import HomeIcon from "@/core/icons/HomeIcon.vue"
 import SelectTheme from "./SelectTheme.vue"
 import SelectWarehouse from "@/modules/Warehouse/components/Warehouse/SelectWarehouse.vue"
 //import IconLogo from "@/icons/IconLogo.vue"

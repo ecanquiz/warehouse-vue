@@ -1,10 +1,20 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import FormUpdatePassword from '@/modules/Auth/components/FormUpdatePassword.vue'
+import AppBtn from '@/core/components/AppBtn.vue'
+import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
+
+
 
 describe('ModuleAuthComponentFormUpdatePassword.vue',  () => {
   it('emits the input to its parent', async () => {
     const wrapper = mount(FormUpdatePassword, {
+      global: {
+        components: {
+          AppBtn,
+          AppFlashMessage
+        }
+      },
       props: {
         message: "",
         error: "",

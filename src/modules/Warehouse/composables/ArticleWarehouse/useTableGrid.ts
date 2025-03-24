@@ -6,7 +6,7 @@ import type {
   TableGrid,
   Data as TableGridData,
   Params, SetTimeout
-} from "@/types/TablaGrid"
+} from "@/core/types/TablaGrid"
 
 interface Data extends TableGridData {
   categories: string[];

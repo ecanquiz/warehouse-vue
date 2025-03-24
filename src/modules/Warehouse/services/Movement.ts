@@ -1,4 +1,4 @@
-import Http from "@/utils/Http";
+import Http from "@/core/utils/Http";
 import type { Movement, MovementTypeId } from "../types/Movement";
 
 export const getMovements = (query: string, movementTypeId:number=0) => {  

@@ -1,4 +1,4 @@
-import app from '@/plugins/app'
+import app from '@/core/plugins/app'
 import { createPinia } from 'pinia'
 
 const pinia = createPinia();

@@ -1,5 +1,5 @@
 import { ref } from "vue"
-import { getError } from "@/utils/helpers"
+import { getError } from "@/core/utils/helpers"
 import * as AuthService from "@/modules/Auth/services"
 
 export function useProfileUpdatePassword() {

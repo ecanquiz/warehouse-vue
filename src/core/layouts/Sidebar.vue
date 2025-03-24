@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAuthStore } from "@/modules/Auth/stores/index"
-import { useSidebar } from "@/composables/useSidebar";
-import RecursiveMenu from "@/layouts/RecursiveMenu/Index.vue";
+import { useSidebar } from "@/core/composables/useSidebar";
+import RecursiveMenu from "@/core/layouts/RecursiveMenu/Index.vue";
 
 const { isOpen, isClose } = useSidebar()
 const store = useAuthStore()

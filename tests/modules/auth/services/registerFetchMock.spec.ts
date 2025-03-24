@@ -1,4 +1,4 @@
-import Http from "@/utils/Http";
+import Http from "@/core/utils/Http";
 import {getAuthUser, registerUser} from "@/modules/Auth/services";
 
 test("should fetch login-auth-user via http-auth-service", () => {

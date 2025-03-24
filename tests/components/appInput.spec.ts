@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppErrorMessage from '@/components/AppErrorMessage.vue'
-import AppInput from '@/components/AppInput.vue'
+import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
+import AppInput from '@/core/components/AppInput.vue'
 
 describe('AppInput with UUID', () => {
   const factory = (props = {}, attrs = {} ) => {
@@ -71,7 +71,8 @@ describe('AppInput with UUID', () => {
       type: 'text',
       placeholder: '', // without label prop
       class: 'field',
-      id: '6' // uuid
+      id: '6', // uuid
+      value: ''
     })    
   })
 
@@ -83,7 +84,8 @@ describe('AppInput with UUID', () => {
       disabled: '',
       placeholder: 'Name', // with label prop
       class: 'field',
-      id: '7' // uuid
+      id: '7', // uuid
+      value: ''
     })
   })
 })
