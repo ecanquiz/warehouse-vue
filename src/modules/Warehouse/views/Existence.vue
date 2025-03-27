@@ -74,7 +74,7 @@ const {
       </table>
     </div>
     <span v-if="Object.keys(errors).length > 0" class="text-red-500">{{ errors }}</span>
-    <AppPaginationB v-if="data.links" :links="data.links" />      
+    <AppPaginationView v-if="data.links" :links="data.links" />      
   </div>
 </div>
 </template>

@@ -13,16 +13,12 @@ const {
   loadErrors,
   loadPending,
 
-
   submit,
   loadArticles   
 } = useCreateOrEdit(props.id)
 </script>
 
 <template>
-
-
-
   <div>
     <AppPageHeader>Almacenes / {{ !props.id ? "Crear" : "Editar" }}</AppPageHeader>
     <transition name="fade" mode="out-in">

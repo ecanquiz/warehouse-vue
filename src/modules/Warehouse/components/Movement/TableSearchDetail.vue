@@ -158,7 +158,7 @@ watch(details as Detail[], (details: Detail[]) => {
       </tbody>
     </table>
   </div>
-  <AppPaginationC
+  <AppPaginationComponent
     v-if="data.links"
     :links="data.links"
     @getSearch="getSearch"

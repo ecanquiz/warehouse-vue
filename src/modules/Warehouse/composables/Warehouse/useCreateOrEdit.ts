@@ -41,7 +41,6 @@ export default (propsId?: string) => {
     pending.value = true
 
     ArticleService.getDistinctCategoriesByArticleDetail().then(response => {
-      console.log(response)
       categories.value = response.data.map((r: optionsVueMultiselect) => ({name: r, code: r}))
     })
 

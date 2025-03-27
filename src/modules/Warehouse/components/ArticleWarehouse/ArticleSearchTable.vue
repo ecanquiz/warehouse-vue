@@ -118,7 +118,7 @@ const selectArticle =  async(article: Article, quantity: number = 1 ) => {
       </tbody>
     </table>
   </div>
-  <AppPaginationC
+  <AppPaginationComponent
     v-if="data.links"
     :links="data.links"
     @getSearch="getSearch"
