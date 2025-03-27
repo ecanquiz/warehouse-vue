@@ -28,7 +28,7 @@ provide('articleIds', {articleIds, updateArticleIds});
   <AppPageHeader> Artículos por almacén </AppPageHeader>
   <div class="grid justify-items-stretch mt-2">
     <div>
-      <AppBtn
+      <AppButton
         class="btn p-8 justify-self-start m-1"
         type="button"                 
         data-testid="click-btn"

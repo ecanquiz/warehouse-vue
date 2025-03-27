@@ -27,7 +27,7 @@ export default defineComponent({
   },
   async mounted (){
     const response = await MenuService.getMenus();
-    this.menus = response.data.data
+    this.menus = response.data
     //this.links.links = response.data.rows.links;
     //this.links.search = response.data.search;
     //this.links.sort = response.data.sort;
@@ -92,7 +92,7 @@ export default defineComponent({
             </tr>
           </thead>
         <tbody>              
-          <tr v-for="menu in menus" :key="menu.id" class="hover:bg-gray-500 focus-within:bg-gray-400">               
+          <tr v-for="menu in menus.data" :key="menu.id" class="hover:bg-gray-500 focus-within:bg-gray-400">               
             <td class="">{{ menu.alias }}</td>                                
             <td class="">{{ menu.path }}</td>
             <td class="">{{ menu.icon }}</td>  
@@ -110,9 +110,8 @@ export default defineComponent({
           </tr>                
         </tbody>            
       </table>
-        
       
-      <AppPaginationB :links="menus.links" />
+      <AppPaginationB v-if="menus.links" :links="menus.links" />
       
       <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400" v-if="isOpenCreate">
         <Create @closeModal0="closeModalCreate"/>

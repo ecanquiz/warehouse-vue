@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 // @ts-nocheck
+import Pagination from './components/Index/Pagination.vue';
 import useIndex from "../../composables/Movement/useIndex";
 import useMovementType from "../../composables/Movement/useMovementType";
 
@@ -137,12 +138,12 @@ const {
             </td--> 
             <td class="">
               <div class="flex items-center space-x-1">                
-                <AppBtn
+                <AppButton
                   class="btn btn-success btn-xs"                    
                   @click="router.push({ path: `/${routePath}/edit/${row.id}` })"
                 >
                   Mostrar
-                </AppBtn> 
+                </AppButton> 
               </div>
             </td>
           </tr>
@@ -153,7 +154,7 @@ const {
       </table>
     </div>
     <span v-if="Object.keys(errors).length > 0" class="text-red-500">{{ errors }}</span>
-    <AppPaginationD v-if="data.links" :links="data.links" />      
+    <Pagination v-if="data.links" :links="data.links" />      
   </div>
 </div>
 </template>

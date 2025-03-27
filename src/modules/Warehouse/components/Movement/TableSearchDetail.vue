@@ -91,32 +91,32 @@ watch(details as Detail[], (details: Detail[]) => {
         <tr class="bg-base-100">
           <th class="px-4 py-1">Acción(es)</th>
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('warehouses.code')">
                 CÓDIGO DEL ALMACÉN
-            </AppBtn>
+            </AppButton>
           </th>
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('warehouses.name')">
               ALMACÉN
-            </AppBtn>
+            </AppButton>
           </th>
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('article_warehouse.int_cod')">
                 CÓDIGO INTERNO
-            </AppBtn>
+            </AppButton>
           </th>      
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('article_warehouse.name')">
               NOMBRE DEL ARTÍCULO
-            </AppBtn>
+            </AppButton>
           </th>
           <th class="px-4 py-1">Existencia</th> 
           <th class="px-4 py-1">Min</th>
@@ -138,12 +138,12 @@ watch(details as Detail[], (details: Detail[]) => {
                 @click="selectArticle(article, 1)"
               />
                         
-              <AppBtn
+              <AppButton
                 v-show="selectedArticle[article.id]"
                 @click="setQuantity(article.id)"
                 type="button"
                 class="btn btn-primary btn-xs"
-              >ModQty|{{ quantityArticle[article.id]}}</AppBtn>
+              >ModQty|{{ quantityArticle[article.id]}}</AppButton>
             </div>
           </td>
           <td class="px-4 py-1 text-center">{{article.warehouse_code}}</td>

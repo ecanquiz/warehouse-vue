@@ -74,12 +74,12 @@ const {
             </td>
             <td class="">
               <div class="flex items-center space-x-1">
-                <AppBtn
+                <AppButton
                   @click="deleteRow(row.id)"                    
                   class="btn btn-danger btn-xs"                    
                 >
                   Eliminar
-                </AppBtn>
+                </AppButton>
               </div>
             </td>
           </tr>

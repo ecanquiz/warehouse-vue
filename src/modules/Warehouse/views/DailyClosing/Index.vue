@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 // @ts-nocheck
 import useIndex from "../../composables/DailyClosing/useIndex";
 
@@ -129,7 +128,7 @@ const formatMovementTypeId = (movementTypeId: number) => {
       </table>
     </div>
     <span v-if="Object.keys(errors).length > 0" class="text-red-500">{{ errors }}</span>
-    <AppPaginationD v-if="data.links" :links="data.links" />      
+    <AppPaginationB v-if="data.links" :links="data.links" />      
   </div>
 </div>
 </template>

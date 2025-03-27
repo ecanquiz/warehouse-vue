@@ -71,7 +71,7 @@ const submit = async () => {
     </div>
 
     <div class="mt-4 px-2 border-gray-100 flex justify-end space-x-2">
-      <AppBtn
+      <AppButton
         type="submit"
         :text="sending ? 'Guardando...' : 'Guardar'"
         :isDisabled='sending'
