@@ -152,7 +152,7 @@ const deleteRow = (rowId?: string) => {
           </tbody>
         </table>
       </div>
-      <AppPaginationB v-if="data.links" :links="data.links" />
+      <AppPaginationView v-if="data.links" :links="data.links" />
     </div>
   </div>
 </template>

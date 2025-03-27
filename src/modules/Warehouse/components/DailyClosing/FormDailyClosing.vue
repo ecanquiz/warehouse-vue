@@ -66,7 +66,7 @@ const submit = async () => {
           <AppErrorMessage v-if="v$.date_time.$error" :id="`1-error`">{{ v$.date_time.$errors[0].$message }}</AppErrorMessage>
         </div>
       </div>
-      <AppBtn
+      <AppButton
         class="btn btn-primary mt-5 justify-self-start"
         type="submit"
         :text="pending ? 'Cerrando...' : 'Cerrar'"

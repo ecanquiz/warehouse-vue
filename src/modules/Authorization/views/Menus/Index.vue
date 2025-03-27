@@ -111,7 +111,7 @@ export default defineComponent({
         </tbody>            
       </table>
       
-      <AppPaginationB v-if="menus.links" :links="menus.links" />
+      <AppPaginationView v-if="menus.links" :links="menus.links" />
       
       <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400" v-if="isOpenCreate">
         <Create @closeModal0="closeModalCreate"/>

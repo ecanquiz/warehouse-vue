@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-type xyz = {
+type PreDailyClosing = {
   date_time: string;
   article_id: number;
   warehouse_code: string;
@@ -14,7 +14,7 @@ type xyz = {
 }
 
 const props = defineProps<{
-    preDailyClosings: xyz[]
+    preDailyClosings: PreDailyClosing[]
 }>()
 
 const getTotalByArticle = article =>  (article.quantity_input - article.quantity_reverse_input) - (article.quantity_output - article.quantity_reverse_output);
