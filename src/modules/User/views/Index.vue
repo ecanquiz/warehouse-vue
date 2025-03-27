@@ -88,18 +88,18 @@ const {
               </td>
               <td class="">
                 <div class="flex items-center space-x-1">                
-                  <AppBtn
+                  <AppButton
                     class="btn btn-primary btn-xs"                    
                     @click="router.push({ path: '/users/edit/'+row.id })"
                   >
                     Editar
-                  </AppBtn>
-                  <AppBtn
+                  </AppButton>
+                  <AppButton
                     @click="deleteRow(row.id)"                    
                     class="btn btn-danger btn-xs"                    
                   >
                     Eliminar
-                  </AppBtn>
+                  </AppButton>
                 </div>
               </td>
             </tr>

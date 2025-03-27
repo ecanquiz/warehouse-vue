@@ -47,7 +47,7 @@ const componentKey = ref(0);
 
       <div class="grid justify-items-stretch mt-2">
         <div>
-          <AppBtn v-if="!movement.main.id && !isReverse"
+          <AppButton v-if="!movement.main.id && !isReverse"
             class="btn p-8 justify-self-start m-1"
             type="button"                 
             data-testid="click-btn"
@@ -55,7 +55,7 @@ const componentKey = ref(0);
             :text="`${closeButtonOpened}`"
             @click="panelToogleMovementDetail"
           />
-          <AppBtn v-if="panelOpened"
+          <AppButton v-if="panelOpened"
             class="btn btn-primary p-8 justify-self-end m-1"
             type="button"                 
             data-testid="click-btn"
@@ -76,7 +76,7 @@ const componentKey = ref(0);
         <AppErrorMessage v-if="emptyDetail" :id="`2-error`">Requiere artículo(s)</AppErrorMessage>
       </div>
 
-      <AppBtn
+      <AppButton
         v-if="!movement.main.id"
         class="btn btn-primary mt-5 justify-self-start"
         type="submit"

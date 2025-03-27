@@ -102,13 +102,13 @@ const loadArticles = () => {
   </div>
 
   <div class="mt-4 px-2 border-gray-100 flex justify-end space-x-2">
-    <AppBtn
+    <AppButton
       type="submit"
       :text="pending ? 'Guardando...' : 'Guardar'"
       :isDisabled='pending'
     />
 
-    <AppBtn
+    <AppButton
       type="button"
       :text="loadPending ? 'Cargando artículos...' : 'Cargar artículos'"
       :isDisabled='loadPending'

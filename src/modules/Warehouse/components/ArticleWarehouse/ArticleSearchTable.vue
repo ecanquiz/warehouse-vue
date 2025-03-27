@@ -72,25 +72,25 @@ const selectArticle =  async(article: Article, quantity: number = 1 ) => {
         <tr class="bg-base-100">
           <th class="px-4 py-1">Acción(es)</th>
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('warehouses.name')">
               CÓDIGO
-            </AppBtn>
+            </AppButton>
           </th>
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('article_warehouse.int_cod')">
               ARTÍCULO
-            </AppBtn>
+            </AppButton>
           </th>      
           <th class="px-4 py-1">
-            <AppBtn
+            <AppButton
               class="bg-base-100 hover:text-gray-500"
               @click.prevent="setSort('article_warehouse.name')">
               DECRIPCIÓN
-            </AppBtn>
+            </AppButton>
           </th>
         </tr>
       </thead>

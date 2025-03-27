@@ -99,7 +99,7 @@ const onlyShow = main.id ? true : false;
           />
         </div>
         <div class="flex justify-center w-1/5 my-6" v-if="isReverse">
-          <AppBtn type="button" text="Buscar" @click="search(main.support_number)"/>
+          <AppButton type="button" text="Buscar" @click="search(main.support_number)"/>
         </div>
 
       </div>
