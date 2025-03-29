@@ -1,6 +1,6 @@
 import { describe, it, vi, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import FormCreateOrEdit from '@/modules/User/components/FormCreateOrEdit.vue'
+import FormCreateOrEdit from '../FormCreateOrEdit.vue'
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
 
 describe('UserForm Component',  () => {

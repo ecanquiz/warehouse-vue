@@ -1,7 +1,7 @@
 import { test, vi, expect } from "vitest"
-import UserService from "@/modules/User/services"
+import UserService from "../index"
 
-vi.mock("@/modules/User/services")
+vi.mock("../index")
 
 describe('UserService', () => {
 
