@@ -1,7 +1,7 @@
 import { describe, it, vi, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import CreateOrEdit from '@/modules/User/views/CreateOrEdit.vue'
+import CreateOrEdit from '../Index.vue'
 import router from '@/core/router'
 
 describe('Modules User views CreateOrUpdate Component',  () => {
