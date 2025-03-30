@@ -1,4 +1,4 @@
-import { test, vi, expect } from "vitest"
+import { test, expect } from "vitest"
 import * as AuthService from "../apiMock/AuthService"
 
 test('should fetch login-auth-user via http-auth-service', async () => {
@@ -12,7 +12,7 @@ test('should fetch login-auth-user via http-auth-service', async () => {
     { name: 'Pineapple T-Shirt', image: 'pineapple-tshirt.jpg', price: 12 }
   ])
   
-  const updateUser = await AuthService.updateUser()
+  const updateUser = await AuthService.updateUser({})
   
   expect(updateUser).toEqual("User updated.");
     

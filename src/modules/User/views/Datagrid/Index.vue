@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // @ts-nocheck
-import useIndex from "./useIndex";
+import useIndex from "./composables/useIndex";
 import AvatarIcon from "@/core/icons/AvatarIcon.vue"
 
 const {

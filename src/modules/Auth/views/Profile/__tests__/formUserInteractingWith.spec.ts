@@ -4,6 +4,13 @@ import { nextTick } from 'vue'
 import { createTestingPinia } from '@pinia/testing'
 import FormUser from '../FormUser.vue'
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
+import type { VueWrapper } from '@vue/test-utils'
+import type { UpdateUser } from '../../../../Auth/types/Auth'
+
+type Wrapper = VueWrapper<Partial<{
+  name: string;
+  email: string;
+}>> // Or put "defineExpose({ name, email })" in components
 
 const factory = () => {
   return mount(FormUser, {
@@ -37,7 +44,7 @@ const factory = () => {
 
 describe('Profile AuthUserForm/Form Component',  () => {
   it('sets the value from state', async () => {
-    const wrapper = factory()
+    const wrapper: Wrapper = factory()
   
     expect(wrapper.vm.name).toBe("John Doe")
     expect(wrapper.vm.email).toBe("user@email.ext")
@@ -60,8 +67,8 @@ describe('Profile AuthUserForm/Form Component',  () => {
     expect(wrapper.emitted()).toHaveProperty('submit')
     const submitEvent = wrapper.emitted('submit')
     expect(submitEvent).toBeTruthy()
-    expect(submitEvent[0][0].name).toBe('John Doe')
-    expect(submitEvent[0][0].email).toBe('user@email.ext')  
+    expect((submitEvent[0][0] as UpdateUser).name).toBe('John Doe')
+    expect((submitEvent[0][0] as UpdateUser).email).toBe('user@email.ext')  
     expect(submitEvent).toEqual([[{
       name: 'John Doe', email: 'user@email.ext'
     }]])

@@ -3,8 +3,9 @@ import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import ProfileUser from '../ProfileUser.vue'
 import { updateUser } from "@/modules/Auth/services"
-import * as Mock from "@/modules/__tests__/apiMock/AuthService"
+import * as MockService from "@/modules/__tests__/apiMock/AuthService"
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
+import type { Mock } from 'vitest'
 
 const payload = {
   name: "John Doe",
@@ -31,9 +32,9 @@ describe('ModuleauthComponentProfileUser.vue',  async () => {
     })
 
     vi.mock("@/modules/Auth/services");
-    updateUser.mockImplementation(Mock.updateUser); 
+    (updateUser as Mock).mockImplementation(MockService.updateUser); 
     
-    expect(await updateUser()).toBe("User updated.");
+    expect(await updateUser({})).toBe("User updated.");
 
   })  
 })

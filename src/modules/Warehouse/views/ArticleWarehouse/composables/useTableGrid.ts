@@ -1,7 +1,7 @@
 import { onMounted, watch, inject } from "vue"
 import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
-import { getArticlesSearchByCategories } from "../../services/Article"
-import WarehouseService from  "../../services/Warehouse"
+import { getArticlesSearchByCategories } from "../../../services/Article"
+import WarehouseService from  "../../../services/Warehouse"
 import type {
   TableGrid,
   Data as TableGridData,

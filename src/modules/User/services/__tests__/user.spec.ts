@@ -1,4 +1,4 @@
-import { test, vi, expect } from "vitest"
+import { describe, it, vi, expect } from "vitest"
 import UserService from "../index"
 
 vi.mock("../index")

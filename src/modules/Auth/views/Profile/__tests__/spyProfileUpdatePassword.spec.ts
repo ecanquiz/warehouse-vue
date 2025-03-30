@@ -3,10 +3,17 @@ import { mount } from '@vue/test-utils'
 import ProfileUpdatePassword from '../ProfileUpdatePassword.vue'
 import AppButton from '@/core/components/AppButton.vue'
 import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
+import type { VueWrapper } from '@vue/test-utils'
+import type {UpdatePassword} from '../../../../Auth/types/Auth'
 
 describe('ModuleAuthComponentProfileUpdatePassword.vue',  () => {
+
+  type Wrapper = VueWrapper<Partial<{
+    updatePassword: (user: UpdatePassword) => void
+  }>> // Or put "defineExpose({ updatePassword })" in components
+
   it('should be called updatePassword with payload', async () => {
-    const wrapper = mount(ProfileUpdatePassword, {
+    const wrapper: Wrapper = mount(ProfileUpdatePassword, {
       global: {
         components: {
           AppButton,

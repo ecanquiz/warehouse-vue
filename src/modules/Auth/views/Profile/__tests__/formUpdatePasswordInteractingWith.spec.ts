@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import FormUpdatePassword from '../FormUpdatePassword.vue'
 import AppButton from '@/core/components/AppButton.vue'
 import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
+import type { UpdatePassword } from '../../../../Auth/types/Auth'
 
 describe('ModuleAuthComponentFormUpdatePassword.vue',  () => {
   it('emits the input to its parent', async () => {
@@ -29,9 +30,9 @@ describe('ModuleAuthComponentFormUpdatePassword.vue',  () => {
     const submitEvent = wrapper.emitted('submit')
 
     expect(submitEvent).toBeTruthy()
-    expect(submitEvent[0][0].current_password).toBe('current-password')
-    expect(submitEvent[0][0].password).toBe('password')
-    expect(submitEvent[0][0].password_confirmation).toBe('password-confirm')
+    expect((submitEvent[0][0] as UpdatePassword).current_password).toBe('current-password')
+    expect((submitEvent[0][0] as UpdatePassword).password).toBe('password')
+    expect((submitEvent[0][0] as UpdatePassword).password_confirmation).toBe('password-confirm')
     expect(submitEvent).toEqual([[{
       current_password: 'current-password',
       password: 'password',

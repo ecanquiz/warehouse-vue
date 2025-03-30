@@ -1,10 +1,12 @@
+import { afterEach, beforeEach, expect, test, vi } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
 import router from '@/core/router'
 import AppLink from "@/core/components/AppLink.vue"
 import RegisterIndex from '../Index.vue'
+import type { MockWithScrollTo } from '@/core/types/Mock'
 
-beforeEach(() => { window.scrollTo = vi.fn() })
+beforeEach(() => { (window.scrollTo as MockWithScrollTo) = vi.fn() })
 afterEach(() => { vi.clearAllMocks() })
 
 test('component must be mounted correctly', () => {
@@ -25,3 +27,4 @@ test('component must be mounted correctly', () => {
   expect(loginLink.html()).toContain('to="/login"') 
   
 })
+    

@@ -1,3 +1,4 @@
+import {test, vi, expect} from "vitest"
 import Http from "@/core/utils/Http";
 import {getAuthUser, registerUser} from "../index";
 
@@ -18,7 +19,7 @@ test("should fetch login-auth-user via http-auth-service", () => {
       emailVerified: null      
     };
   
-    Http.get = vi.fn().mockResolvedValue();
+    Http.get = vi.fn().mockResolvedValue(null);
     Http.post = vi.fn().mockResolvedValue(respRegister);  
     registerUser(payload).then(
       (data) => expect(data).toEqual(respRegister)
