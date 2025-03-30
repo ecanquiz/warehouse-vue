@@ -3,6 +3,8 @@ import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import ProfileUser from '../ProfileUser.vue'
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
+import type { VueWrapper } from '@vue/test-utils'
+import type { UpdateUser } from '../../../../Auth/types/Auth'
 
 const payload = {
   name: "John Doe",
@@ -10,8 +12,13 @@ const payload = {
 }
 
 describe('ModuleAuthComponentProfileUser.vue',  () => {
+
+  type Wrapper = VueWrapper<Partial<{
+    updateUser: (user: UpdateUser) => void
+  }>> // Or put "defineExpose({ updateUser })" in components
+
   it('should be called updateUser with payload', async () => {
-    const wrapper = mount(ProfileUser, {
+    const wrapper: Wrapper = mount(ProfileUser, {
       global: {
         components: {
           AppButton,

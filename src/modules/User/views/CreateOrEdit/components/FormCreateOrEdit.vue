@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue"
-import type User from "../types/User"
-import type Role from "../types/Role"
+import type User from "../../../types/User"
+import type Role from "../../../types/Role"
 // import type Errors from "../types/Errors"
 
 const props = defineProps<{

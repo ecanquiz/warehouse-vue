@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import FormLogin from '../FormLogin.vue'
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'

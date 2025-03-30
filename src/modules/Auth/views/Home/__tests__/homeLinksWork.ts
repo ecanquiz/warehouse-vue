@@ -1,12 +1,15 @@
+import { afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import { mount, flushPromises } from "@vue/test-utils"
 import { createPinia } from "pinia"
 import router from "@/modules/Auth/__tests__/router"
 import AppLink from "@/core/components/AppLink.vue"
 import Home from "../Index.vue"
+import type { MockWithScrollTo } from "@/core/types/Mock"
+
 
 const FlashMessage = { }
 
-beforeEach(() => { window.scrollTo = vi.fn() })
+beforeEach(() => { (window.scrollTo as MockWithScrollTo) = vi.fn() })
 afterEach(() => { vi.clearAllMocks() })
 
 const factory = () => {

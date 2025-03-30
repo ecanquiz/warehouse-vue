@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import FormRegister from '../FormRegister.vue'
 import AppButton from '@/core/components/AppButton.vue'
