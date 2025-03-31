@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
-import AppInput from '@/core/components/AppInput.vue'
+import AppErrorMessage from '../AppErrorMessage.vue'
+import AppInput from '../AppInput.vue'
 
 describe('AppInput with UUID', () => {
   const factory = (props = {}, attrs = {} ) => {

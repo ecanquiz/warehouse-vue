@@ -2,17 +2,18 @@ import { describe, it, vi, expect, afterEach,  afterAll} from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import router from '@/core/router'
-import Menu from '@/core/layouts/RecursiveMenu/Index.vue'
+import Menu from '../Index.vue'
 import data from "./data"
 import nav from "./nav"
+import type { MockWithScrollTo } from "@/core/types/Mock"
 
 vi.mock("@/modules/Auth/services", () => ({
   getAuthMenu: vi.fn(() => ({ data }))
-}))
+}));
 
-window.scrollTo = vi.fn()
-afterEach(() => { vi.resetAllMocks() })
-afterAll(() => { vi.clearAllMocks() })
+(window.scrollTo as MockWithScrollTo) = vi.fn();
+afterEach(() => { vi.resetAllMocks() });
+afterAll(() => { vi.clearAllMocks() });
 
 describe('RecursiveMenu', ()=> {
 

@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import AppSectionInfo from '@/core/components/AppSectionInfo.vue'
 

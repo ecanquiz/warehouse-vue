@@ -1,3 +1,4 @@
+import { test, expect, vi } from 'vitest'
 import Http from '@/core/utils/Http';
 
 test('should fetch users', () => {

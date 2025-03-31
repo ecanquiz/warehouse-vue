@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
+import AppErrorMessage from '../AppErrorMessage.vue'
 
 test('AppErrorMessage: it should render error message', () => {        
   const wrapper = mount(AppErrorMessage, {

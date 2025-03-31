@@ -14,7 +14,6 @@ export default [
     "path":"#",
     "icon":"printer",
     "sort":1,
-    "icon": "",
     "children_menus": [
        {
           "id":5,
