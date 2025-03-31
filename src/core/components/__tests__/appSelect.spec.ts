@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
-import AppSelect from '@/core/components/AppSelect.vue'
+import AppErrorMessage from '../AppErrorMessage.vue'
+import AppSelect from '../AppSelect.vue'
 
 describe('AppSelect', () => {
   const factory = (props = {}, attrs = {} ) => {
@@ -115,9 +115,9 @@ describe('AppSelect', () => {
     })
     const options = wrapper.find('select').findAll('option')
 
-    await options.at('3').setSelected()
+    await (options.at(3) ).setValue()
 
-    expect(wrapper.find('option:checked').element.value).toBe('3')
+    expect((wrapper.find('option:checked').element as HTMLSelectElement).value).toBe('3')
   })
  
 })

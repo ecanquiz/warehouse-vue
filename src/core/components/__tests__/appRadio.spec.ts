@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppRadio from '@/core/components/AppRadio.vue'
+import AppRadio from '../AppRadio.vue'
 
 describe('AppRadio', () => {
   const factory = (props = {}, attrs = {} ) => {
@@ -48,7 +48,7 @@ describe('AppRadio', () => {
     const wrapper = factory()
     const radio = wrapper.find('input')
 
-    await radio.setChecked()
+    await radio.setValue()
 
     expect(radio.element.checked).toBeTruthy()
   })

@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppRadio from '@/core/components/AppRadio.vue'
-import AppRadioGroup from '@/core/components/AppRadioGroup.vue'
-import AppErrorMessage from '@/core/components/AppErrorMessage.vue'
-
+import AppRadio from '../AppRadio.vue'
+import AppRadioGroup from '../AppRadioGroup.vue'
+import AppErrorMessage from '../AppErrorMessage.vue'
 
 describe('AppRadioGroup', () => {
   const factory = (props = {}, shallow = false ) => {
@@ -57,7 +56,7 @@ describe('AppRadioGroup', () => {
   it('should be checked', async() => {
     const wrapper = factory({})    
 
-    await wrapper.find('input[value="1"]').setChecked()
+    await wrapper.find('input[value="1"]').setValue()
 
     expect(
       wrapper.emitted()['update:modelValue'][0][0]

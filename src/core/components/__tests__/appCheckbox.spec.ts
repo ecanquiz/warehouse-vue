@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import AppCheckbox from '@/core/components/AppCheckbox.vue'
+import AppCheckbox from '../AppCheckbox.vue'
 
 describe('AppCheckbox', () => {
   const factory = (props = {}, attrs = {}) => {
