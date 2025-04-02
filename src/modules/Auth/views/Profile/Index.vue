@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useAuthStore } from "../../stores"
-import ProfileUser from "./ProfileUser.vue"
-import ProfileUpdatePassword from "./ProfileUpdatePassword.vue"
-import ProfileVerifyEmail from "./ProfileVerifyEmail.vue"
-import ProfileFileUpload from "./ProfileFileUpload.vue"
+import { useAuthStore } from "@/modules/Auth/stores"
+import ProfileUser from "./components/ProfileUser/Index.vue"
+import ProfileUpdatePassword from "./components/ProfileUpdatePassword/Index.vue"
+import ProfileVerifyEmail from "./components/ProfileVerifyEmail/Index.vue"
+import ProfileFileUpload from "./components/ProfileFileUpload.vue"
 
 const store = useAuthStore()
 

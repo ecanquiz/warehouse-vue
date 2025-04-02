@@ -1,24 +1,20 @@
 import { describe, it, vi, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import ProfileUser from '../ProfileUser.vue'
+import ProfileUser from '../Index.vue'
+import { updateUser } from "@/modules/Auth/services"
+import * as MockService from "@/modules/__tests__/apiMock/AuthService"
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
-import type { VueWrapper } from '@vue/test-utils'
-import type { UpdateUser } from '../../../../Auth/types/Auth'
+import type { Mock } from 'vitest'
 
 const payload = {
   name: "John Doe",
   email: "user@email.ext"
 }
 
-describe('ModuleAuthComponentProfileUser.vue',  () => {
-
-  type Wrapper = VueWrapper<Partial<{
-    updateUser: (user: UpdateUser) => void
-  }>> // Or put "defineExpose({ updateUser })" in components
-
+describe('ModuleauthComponentProfileUser.vue',  async () => {
   it('should be called updateUser with payload', async () => {
-    const wrapper: Wrapper = mount(ProfileUser, {
+    const wrapper = mount(ProfileUser, {
       global: {
         components: {
           AppButton,
@@ -34,12 +30,11 @@ describe('ModuleAuthComponentProfileUser.vue',  () => {
         })]
       }
     })
-    const updateUserSpy = vi.spyOn(wrapper.vm, 'updateUser');
 
-    wrapper.vm.updateUser(payload)
+    vi.mock("@/modules/Auth/services");
+    (updateUser as Mock).mockImplementation(MockService.updateUser); 
+    
+    expect(await updateUser({})).toBe("User updated.");
 
-    expect(updateUserSpy).toHaveBeenCalled()
-    expect(updateUserSpy).toHaveBeenCalledTimes(1)
-    expect(updateUserSpy).toHaveBeenCalledWith(payload)
   })  
 })

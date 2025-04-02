@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Form from "./Form.vue";
-import useRole from "./useRole";
+import Form from "./components/Form.vue";
+import useRole from "../composables/useRole";
 
 const props = defineProps<{ id?: string }>()
 

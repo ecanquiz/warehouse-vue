@@ -4,7 +4,7 @@ import { onMounted, reactive } from "vue";
 import { onBeforeRouteUpdate } from 'vue-router' 
 import * as RoleService from "@/modules/Authorization/services/RoleService";
 import useTableGrid from "@/core/composables/useTableGrid";
-import useRole from "./useRole";
+import useRole from "../composables/useRole";
 //import type User from "./User"
 
 const {

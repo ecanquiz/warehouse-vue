@@ -5,7 +5,7 @@ import { createTestingPinia } from '@pinia/testing'
 import FormUser from '../FormUser.vue'
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
 import type { VueWrapper } from '@vue/test-utils'
-import type { UpdateUser } from '../../../../Auth/types/Auth'
+import type { UpdateUser } from '@/modules/Auth/types/Auth'
 
 type Wrapper = VueWrapper<Partial<{
   name: string;

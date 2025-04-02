@@ -1,7 +1,7 @@
 <script setup lang="ts">  
   import IconLogo from "@/core/icons/IconLogo.vue"
-  import FormLogin from "./FormLogin.vue";
-  import { useLogin } from './useLogin'  
+  import FormLogin from "./components/FormLogin.vue";
+  import { useLogin } from './composables/useLogin'  
 
   const { login, sending, error } = useLogin()
 </script>

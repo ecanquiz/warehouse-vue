@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import FormUpdatePassword from '../FormUpdatePassword.vue'
 import AppButton from '@/core/components/AppButton.vue'
 import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
-import type { UpdatePassword } from '../../../../Auth/types/Auth'
+import type { UpdatePassword } from '@/modules/Auth/types/Auth'
 
 describe('ModuleAuthComponentFormUpdatePassword.vue',  () => {
   it('emits the input to its parent', async () => {

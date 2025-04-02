@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue"
 import { useAuthStore } from "@/modules/Auth/stores"
  
-defineProps<{
+const props = defineProps<{
   message?: string
   error?: string
   sending?: boolean
@@ -49,10 +49,10 @@ onMounted(() => {
     />
     <AppButton
       type="submit"
-      :text="sending ? 'Guardando...': 'Guardar'"
-      :isDisabled="sending"
+      :text="props.sending ? 'Guardando...': 'Guardar'"
+      :isDisabled="props.sending"
       data-testid="submit-button"
     />
-    <AppFlashMessage :message="message" :error="error" />
+    <AppFlashMessage :message="props.message" :error="props.error" />
   </form>
 </template>

@@ -4,7 +4,7 @@ import { getError } from "@/core/utils/helpers";
 import * as MenuService from "@/modules/Authorization/services/MenuService";
 import * as RoleService from "@/modules/Authorization/services/RoleService";
 import type { Error } from "@/core/types/Error"
-import type Role from "../../types/Role"
+import type Role from "@/modules/Authorization/types/Role"
 
 export default (roleId?: string) => {
   const router = useRouter();

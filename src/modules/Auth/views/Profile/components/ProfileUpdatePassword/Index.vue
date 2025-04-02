@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import FormUpdatePassword from "./FormUpdatePassword.vue"
-import { useProfileUpdatePassword } from "./useProfileUpdatePassword"
+import FormUpdatePassword from "./components/FormUpdatePassword.vue"
+import { useProfileUpdatePassword } from "./composables/useProfileUpdatePassword"
 
 const {
   error,

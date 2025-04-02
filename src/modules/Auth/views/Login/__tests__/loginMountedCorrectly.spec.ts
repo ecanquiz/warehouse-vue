@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
 import router from '@/core/router'
 import AppLink from "@/core/components/AppLink.vue"
-import Login from '../Index.vue'
+import LoginIndex from '../Index.vue'
 import type { MockWithScrollTo } from '@/core/types/Mock'
 
 beforeEach(() => { (window.scrollTo as MockWithScrollTo) = vi.fn() })
@@ -11,7 +11,7 @@ afterEach(() => { vi.clearAllMocks() })
 
 test('component must be mounted correctly', async () => {
 
-  const wrapper = shallowMount(Login, {
+  const wrapper = shallowMount(LoginIndex, {
     global: {
       plugins: [createPinia(), router],
       components: { AppLink }
