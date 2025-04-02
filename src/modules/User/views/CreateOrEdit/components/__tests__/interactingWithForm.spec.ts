@@ -1,6 +1,6 @@
 import { describe, it, vi, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import FormCreateOrEdit from '../components/FormCreateOrEdit.vue'
+import FormCreateOrEdit from '../FormCreateOrEdit.vue'
 import {
   AppButton,
   AppInput,
@@ -8,7 +8,7 @@ import {
   AppFlashMessage,
   AppSelect
 } from '@/modules/__tests__/globalComponents'
-import type User from '../../../types/User'
+import type User from '@/modules/User/types/User'
 
 describe('UserForm Component',  () => {
   it('emits the input to its parent', async () => {

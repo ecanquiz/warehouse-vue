@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, shallowRef } from "vue"
-import type Role from "../../types/Role"
+import type Role from "@/modules/Authorization/types/Role"
 import type { Error } from "@/core/types/Error"
 import type { Menu } from "@/core/types/Menu"
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 
-defineProps<{
+const props = defineProps<{
   message?: string
   error?: string
   sending?: boolean
@@ -58,11 +58,11 @@ const submit = async () => {
       />
     </div>
     <AppButton type="submit"
-      :text="sending ? 'Guardando...': 'Guardar'"
-      :isDisabled="sending"
+      :text="props.sending ? 'Guardando...': 'Guardar'"
+      :isDisabled="props.sending"
       data-testid="submit-button"
     />    
-    <AppFlashMessage :message="message" :error="error" />
+    <AppFlashMessage :message="props.message" :error="props.error" />
   </form>
 </template>
 

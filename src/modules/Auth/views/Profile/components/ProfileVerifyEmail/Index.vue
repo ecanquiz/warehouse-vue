@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from "@/modules/Auth/stores"
-import FormVerifyEmail from "./FormVerifyEmail.vue"
+import FormVerifyEmail from "./components/FormVerifyEmail.vue"
 
 const store = useAuthStore()
 </script>

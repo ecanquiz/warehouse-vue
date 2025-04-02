@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Form from '../FormRegister.vue'
 import { AppButton, AppInput, AppErrorMessage, AppFlashMessage, AppSelect } from '@/modules/__tests__/globalComponents'
-import type {FormRegister as Register} from '../../../../Auth/types/Auth'
+import type {FormRegister as Register} from '@/modules/Auth/types/Auth'
 
 describe('ModuleAuthComponentFormRegister.vue', () => {
 

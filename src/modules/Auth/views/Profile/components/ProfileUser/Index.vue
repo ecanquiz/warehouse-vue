@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import FormUser from "./FormUser.vue"
-import { useProfileUser } from "./useProfileUser"
+import FormUser from "./components/FormUser.vue"
+import { useProfileUser } from "./composables/useProfileUser"
 
 const {
   error,

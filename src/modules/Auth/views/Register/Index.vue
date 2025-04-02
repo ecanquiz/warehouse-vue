@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import IconLogo from "@/core/icons/IconLogo.vue"
-  import FormRegister from "./FormRegister.vue";
-  import { useRegister } from './useRegister'
+  import FormRegister from "./components/FormRegister.vue";
+  import { useRegister } from './composables/useRegister'
 
   const { register, sending, error } = useRegister()
 </script>

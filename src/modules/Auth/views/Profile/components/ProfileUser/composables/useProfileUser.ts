@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { getError } from "@/core/utils/helpers"
-import * as AuthService from "../../services"
-import { useAuthStore } from "../../stores"
+import * as AuthService from "@/modules/Auth/services"
+import { useAuthStore } from "@/modules/Auth/stores"
 
 export function useProfileUser() {  
   const error = ref<string>()

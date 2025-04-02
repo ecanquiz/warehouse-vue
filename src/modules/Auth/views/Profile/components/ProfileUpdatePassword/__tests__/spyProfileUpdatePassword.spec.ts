@@ -1,10 +1,10 @@
 import { describe, it, vi, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ProfileUpdatePassword from '../ProfileUpdatePassword.vue'
+import ProfileUpdatePassword from '../Index.vue'
 import AppButton from '@/core/components/AppButton.vue'
 import AppFlashMessage from '@/core/components/AppFlashMessage.vue'
 import type { VueWrapper } from '@vue/test-utils'
-import type {UpdatePassword} from '../../../../Auth/types/Auth'
+import type {UpdatePassword} from '@/modules/Auth/types/Auth'
 
 describe('ModuleAuthComponentProfileUpdatePassword.vue',  () => {
 
