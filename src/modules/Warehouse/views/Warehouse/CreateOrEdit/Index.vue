@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import FormCreateOrEdit from "../../components/Warehouse/FormCreateOrEdit.vue";
-import useCreateOrEdit from "../../composables/Warehouse/useCreateOrEdit";
+import FormCreateOrEdit from "./components/FormCreateOrEdit.vue";
+import useCreateOrEdit from "./composables/useCreateOrEdit";
 
 const props = defineProps<{ id?: string }>()
 

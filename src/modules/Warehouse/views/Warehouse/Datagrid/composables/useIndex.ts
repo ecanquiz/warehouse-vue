@@ -2,7 +2,7 @@ import { reactive, onMounted } from "vue"
 import { onBeforeRouteUpdate } from "vue-router"
 import useTableGrid from "@/core/composables/useTableGrid"
 import useHttp from "@/core/composables/useHttp"
-import WarehouseService from "../../services/Warehouse"
+import WarehouseService from "@/modules/Warehouse/services/Warehouse"
 
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined
 

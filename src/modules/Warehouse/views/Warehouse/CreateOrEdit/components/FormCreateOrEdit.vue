@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, toRaw } from "vue"
 import VueMultiselect from 'vue-multiselect'
-import type { Warehouse } from "../../types/Warehouse"
+import type { Warehouse } from "@/modules/Warehouse/types/Warehouse"
 // import type Errors from "../types/Errors"
 
 type optionsVueMultiselect = {

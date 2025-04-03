@@ -111,18 +111,18 @@ export default [{
     path: "/warehouses",
     name: "warehouses",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/Warehouse/Index.vue").then(m => m.default)
+    component: () => import("@/modules/Warehouse/views/Warehouse/Datagrid/Index.vue").then(m => m.default)
 }, {
     path: "/warehouses/create",
     name: "warehouseCreate",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/Warehouse/CreateOrEdit.vue").then(m => m.default),
+    component: () => import("@/modules/Warehouse/views/Warehouse/CreateOrEdit/Index.vue").then(m => m.default),
     props: true
 }, {
     path: "/warehouses/edit/:id(\\d+)",
     name: "warehouseEdit",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/Warehouse/CreateOrEdit.vue").then(m => m.default),
+    component: () => import("@/modules/Warehouse/views/Warehouse/CreateOrEdit/Index.vue").then(m => m.default),
     props: true
 }/*, {
     path: "/articles",

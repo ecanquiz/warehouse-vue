@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { reactive} from "vue"
-import useTableGrid from "../composables/useTableGrid"
-import type { Movement, Detail } from '../../../types/Movement';
-import type { Article, QtyArticle } from '../../../types/Article';
+import useTableGrid from "./composables/useTableGrid"
+import type { Movement, Detail } from '@/modules/Warehouse/types/Movement';
+import type { Article, QtyArticle } from '@/modules/Warehouse/types/Article';
 
 const details = reactive([])
 
