@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // @ts-nocheck
-import useIndex from "../composables/useIndex";
+import useIndex from "./composables/useIndex";
 
 const {
   errors,

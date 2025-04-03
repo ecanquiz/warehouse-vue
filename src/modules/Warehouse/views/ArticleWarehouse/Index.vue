@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref, provide} from 'vue';
-import ArticleWarehouseTable from './components/ArticleWarehouseTable.vue';
-import ArticleSearchTable from './components/ArticleSearchTable.vue';
+import ArticleWarehouseTable from './components/ArticleWarehouseTable/Index.vue';
+import ArticleSearchTable from './components/ArticleSearchTable/Index.vue';
 import usePanelToggle from './composables/usePanelToggle';
 
 const {

@@ -3,7 +3,7 @@ import { onBeforeRouteUpdate } from "vue-router"
 import { useStoreWarehouse } from "@/modules/Warehouse/stores"
 import useTableGrid from "@/core/composables/useTableGrid"
 import useHttp from "@/core/composables/useHttp"
-import ArticleWarehouseService from "../../../services/ArticleWarehouse"
+import ArticleWarehouseService from "@/modules/Warehouse/services/ArticleWarehouse"
 
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined
 
