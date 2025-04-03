@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
-import useDailyClosings from '../../composables/DailyClosing/useDailyClosing';
+import useDailyClosings from '../composables/useDailyClosing';
 
 const route = useRoute();
 const router = useRouter();

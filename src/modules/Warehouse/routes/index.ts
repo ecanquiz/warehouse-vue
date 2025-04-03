@@ -91,22 +91,22 @@ export default [{
     path: "/daily-closings",
     name: "daily-closings",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/DailyClosing/Index.vue").then(m => m.default)
+    component: () => import("@/modules/Warehouse/views/DailyClosing/Datagrid/Index.vue").then(m => m.default)
 }, {
     path: "/daily-closings/create",
     name: "daily-closings-create",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/DailyClosing/Create.vue").then(m => m.default)
+    component: () => import("@/modules/Warehouse/views/DailyClosing/Create/Index.vue").then(m => m.default)
 }, {
     path: "/daily-closings/show/:close",
     name: "daily-closings-show",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/DailyClosing/Show.vue").then(m => m.default)
+    component: () => import("@/modules/Warehouse/views/DailyClosing/Show/Index.vue").then(m => m.default)
 }, {
     path: "/summary",
     name: "summary",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/Warehouse/views/Existence.vue").then(m => m.default),
+    component: () => import("@/modules/Warehouse/views/Existence/Index.vue").then(m => m.default),
 }, {
     path: "/warehouses",
     name: "warehouses",

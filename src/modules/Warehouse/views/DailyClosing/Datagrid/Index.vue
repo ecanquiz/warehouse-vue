@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // @ts-nocheck
-import useIndex from "../../composables/DailyClosing/useIndex";
+import useIndex from "./composables/useIndex";
 
 const {
   errors,
@@ -87,7 +87,7 @@ const formatMovementTypeId = (movementTypeId: number) => {
              <td class="">
               <AppLink
                 class="text-indigo-600 hover:text-indigo-800 underline"
-                :to="{ path: `/${routePath}/show/${row.close}`, params: { close: row.close }}"
+                :to="{ path: `/${routePath}/show/${row.close}` }"
               >
                 {{ row.close }}
               </AppLink>

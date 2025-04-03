@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, computed } from 'vue'
 import { useDark } from "@vueuse/core"
-import useFormDailyClosing from "../../composables/DailyClosing/useFormDailyClosing";
+import useFormDailyClosing from "./composables/useFormDailyClosing";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 

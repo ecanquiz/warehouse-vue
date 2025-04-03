@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, provide } from 'vue';
 import { useRouter } from 'vue-router';
-import PreDailyClosing from "../../components/DailyClosing/PreDailyClosing.vue";
-import FormDailyClosing from '../../components/DailyClosing/FormDailyClosing.vue';
-import useDailyClosings from '../../composables/DailyClosing/useDailyClosing';
+import PreDailyClosing from "./components/PreDailyClosing.vue";
+import FormDailyClosing from './components/FormDailyClosing/Index.vue';
+import useDailyClosings from '../composables/useDailyClosing';
 
 const router = useRouter();
 

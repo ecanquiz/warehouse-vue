@@ -1,6 +1,6 @@
 import { ref, onMounted } from 'vue'
 import useHttp from "@/core/composables/useHttp";
-import DaylyClosingServices from '../../services/DaylyClosing';
+import DaylyClosingServices from '@/modules/Warehouse/services/DaylyClosing';
 
 type xyz = {
   date_time: string;
@@ -58,7 +58,6 @@ export default () => {
 
     DaylyClosingServices.setDailyClosings(payload)
       .then((response) => {
-        console.log(response)      
         alert( 'Cierre diario exitoso !!' )
         getPreDailyClosings()
       })

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // @ts-nocheck
-import ExistenceTable from "@/modules/Warehouse/components/Existence/Table.vue"
+import ExistenceTable from "./components/Table.vue"
 //import useIndex from "@/modules/Warehouse/composables/Existence/useIndex";
-import useExistence from "@/modules/Warehouse/composables/Existence/useExistence"
+import useExistence from "./composables/useExistence"
 
 const {
   errors,
