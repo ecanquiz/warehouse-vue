@@ -33,11 +33,11 @@ const getTotalByArticle = article =>  (article.quantity_input - article.quantity
           <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Nombre del Almacén</th>
           <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Código del Artículo</th>
           <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Nombre del Artículo</th>
+          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Stock</th>
           <th class="px-6 py-3 text-center bg-base-100 text-center">Entradas</th>
           <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Salidas</th>
           <th class="px-6 py-3 text-center bg-base-100 text-center">Reversos de Entrada</th>
           <th class="px-6 py-3 bg-gray-50 bg-base-200 text-center">Reversos de Entrada</th>
-          <th class="px-6 py-3 bg-gray-50 bg-base-100 text-center">Total</th>
         </tr>
       </thead>
       <tbody>      
@@ -46,12 +46,12 @@ const getTotalByArticle = article =>  (article.quantity_input - article.quantity
           <td class="px-6 py-3 bg-gray-50 bg-base-100 text-center">{{ detail.warehouse_code }}</td>
           <td class="px-6 py-3 bg-gray-50 bg-base-200 text-left">{{ detail.warehouse_name }}</td>   
           <td class="px-6 py-3 bg-gray-50 bg-base-100 text-center">{{ detail.int_cod }}</td>   
-          <td class="px-6 py-3 bg-gray-50 bg-base-200 text-left">{{ detail.name }}</td>        
+          <td class="px-6 py-3 bg-gray-50 bg-base-200 text-left">{{ detail.name }}</td>
+          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">{{ getTotalByArticle(detail) }}</td>
           <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">{{detail.quantity_input}}</td>
           <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">{{detail.quantity_output}}</td>
           <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">{{detail.quantity_reverse_input}}</td>
           <td class="px-6 py-3 bg-gray-50 bg-base-200 text-right">{{detail.quantity_reverse_output}}</td>
-          <td class="px-6 py-3 bg-gray-50 bg-base-100 text-right">{{ getTotalByArticle(detail) }}</td>
         </tr>
       </tbody>
     </table>    
