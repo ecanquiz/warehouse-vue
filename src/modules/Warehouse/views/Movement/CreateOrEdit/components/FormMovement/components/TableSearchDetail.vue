@@ -2,8 +2,8 @@
 //https://dev.to/razi91/vue-arrays-and-v-model-17e0
 import { reactive, watch, inject} from "vue"
 import useTableGrid from "@/modules/Warehouse/composables/Movement/useTableGrid"
-import type { Movement, Detail } from '../../types/Movement';
-import type { Article, QtyArticle } from '../../types/Article';
+import type { Movement, Detail } from '@/modules/Warehouse/types/Movement';
+import type { Article, QtyArticle } from '@/modules/Warehouse/types/Article';
 
 const { movement: { details } }: {
   movement: Movement

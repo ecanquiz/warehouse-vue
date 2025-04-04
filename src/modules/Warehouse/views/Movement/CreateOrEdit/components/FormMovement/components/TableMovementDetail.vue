@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject } from "vue"
-import type { Movement } from "../../types/Movement";
+import type { Movement } from "@/modules/Warehouse/types/Movement";
 
 const { movement }: { movement: Movement } = inject('movement');
 </script>
