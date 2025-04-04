@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
 // @ts-nocheck
-import Pagination from './components/Index/Pagination.vue';
-import useIndex from "../../composables/Movement/useIndex";
-import useMovementType from "../../composables/Movement/useMovementType";
+import Pagination from './components/Pagination.vue';
+import useIndex from "./composables/useIndex";
+import useMovementType from "./composables/useMovementType";
 
 const {
   errors,

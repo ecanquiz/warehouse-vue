@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, inject, computed } from 'vue'
-import FormMovementMain from '../../components/Movement/FormMovementMain.vue';
-import FormMovementDetail from '../../components/Movement/FormMovementDetail.vue';
-import TableMovementDetail from '../../components/Movement/TableMovementDetail.vue'
-import useMovementDetail from '../../composables/Movement/useMovementDetail'
-import useFormMovementMain from "../../composables/Movement/useFormMovementMain";
-import type { Movement } from "../../types/Movement";
+import FormMovementMain from './components/FormMovementMain/Index.vue';
+import FormMovementDetail from './components/FormMovementDetail.vue';
+import TableMovementDetail from './components/TableMovementDetail.vue'
+import useMovementDetail from './composables/useMovementDetail'
+import useFormMovementMain from "./components/FormMovementMain/composables/useFormMovementMain";
+import type { Movement } from "@/modules/Warehouse/types/Movement";
 
 const { movement }: { movement: Movement } = inject('movement');
 

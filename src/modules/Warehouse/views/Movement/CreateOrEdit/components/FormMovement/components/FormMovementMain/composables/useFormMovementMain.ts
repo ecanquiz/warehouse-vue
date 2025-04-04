@@ -1,12 +1,10 @@
 import { ref, computed, inject } from 'vue' // reactive
 import { useVuelidate } from "@vuelidate/core";
-import useRoutePath from "./useRoutePath"
+import useRoutePath from "../../../../../composables/useRoutePath"
 import { required, helpers } from "@vuelidate/validators";
-import type { Main, Detail } from "../../types/Movement"
 import useHttp from "@/core/composables/useHttp";
 import MovementDetailService from "@/modules/Warehouse/services/MovementDetail";
-import type { Movement } from "../../types/Movement";
-
+import type { Movement, Main, Detail } from "@/modules/Warehouse/types/Movement";
 
 export default () => {
   const {
