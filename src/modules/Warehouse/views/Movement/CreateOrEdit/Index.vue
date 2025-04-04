@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, provide } from 'vue'
 import { useRouter } from 'vue-router'
-import FormMovement from '../../components/Movement/FormMovement.vue';
-import useMovement from '../../composables/Movement/useMovement';
-import useRoutePath from '../../composables/Movement/useRoutePath';
+import FormMovement from './components/FormMovement/Index.vue';
+import useMovement from './composables/useMovement';
+import useRoutePath from './composables/useRoutePath';
 
 const router = useRouter();
 const { routePath } = useRoutePath()

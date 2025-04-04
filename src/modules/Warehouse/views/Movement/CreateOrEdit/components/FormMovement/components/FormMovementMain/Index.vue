@@ -2,8 +2,8 @@
 import { inject, computed } from 'vue'
 import { useDark } from "@vueuse/core"
 import VueDatePicker from '@vuepic/vue-datepicker';
-import useFormMovementMain from "../../composables/Movement/useFormMovementMain";
-import type { Movement } from "../../types/Movement";
+import useFormMovementMain from "./composables/useFormMovementMain";
+import type { Movement } from "@/modules/Warehouse/types/Movement";
 import '@vuepic/vue-datepicker/dist/main.css'
 
 const isDark = useDark({
