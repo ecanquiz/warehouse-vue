@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { inject } from "vue"
 import TableSearchDetail from "./TableSearchDetail.vue"
-import type { Movement, Detail } from '../../types/Movement';
-import type { Article, QtyArticle } from '../../types/Article';
+import type { Movement, Detail } from '@/modules/Warehouse/types/Movement';
+import type { Article, QtyArticle } from '@/modules/Warehouse/types/Article';
 
 const { movement: { details } }: {
   movement: Movement
