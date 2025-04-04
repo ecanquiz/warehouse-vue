@@ -47,7 +47,9 @@ export default () => {
         updateArticleIds(response.data.article_ids)
       })
       .catch((error) => {
-        console.log(error)
+        if (error.response.status)
+          alert(error.response.data.message)
+        console.error(error)
       })
   }
 
