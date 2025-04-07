@@ -6,13 +6,15 @@ import type { Article, QtyArticle } from '@/modules/Warehouse/types/Article';
 
 const details = reactive([])
 
+type SelectedArticle = {
+  [key: string]: boolean;
+};
+
 const emits = defineEmits<{
-  (e: 'selectArticle'
-  //, article: Article
-  ): void
+  (e: 'selectArticle', selectedArticle: SelectedArticle): void
 }>()
 
-const selectedArticle = reactive({})
+const selectedArticle = reactive<SelectedArticle>({})
   
 const data = reactive({
   rows: [],
@@ -36,16 +38,10 @@ const classTr = (index: number): string => {
   return  `bg-base-${num}`
 }
 
-const selectArticle =  async(article: Article, quantity: number = 1 ) => {
-  emits("selectArticle",/* {
-    id: article.id,
-    warehouse_code: article.warehouse_code,
-    warehouse_name: article.warehouse_name,
-    int_cod: article.int_cod,
-    name: article.name,
-    quantity
-  }*/)
-  selectedArticle[article.id] = !selectedArticle[article.id];
+const selectArticle =  async(articleId: string) => {
+  selectedArticle[articleId] = !selectedArticle[articleId];
+  emits("selectArticle", selectedArticle)
+
 }
 </script>
 
@@ -104,7 +100,7 @@ const selectArticle =  async(article: Article, quantity: number = 1 ) => {
                 type="checkbox"
                 v-model="selectedArticle[article.id]"
                 :value="article.id"
-                @click="selectArticle(article, 1)"
+                @click="selectArticle(article.id)"
               />
             </div>
           </td>
@@ -123,7 +119,9 @@ const selectArticle =  async(article: Article, quantity: number = 1 ) => {
     :links="data.links"
     @getSearch="getSearch"
   />
-  <div class="hidden">{{ details }}</div>
+  <div class="">{{ selectedArticle }}</div>
+
+  <div class="hidden">{{ selectedArticle }}</div>
   </div>
 </template>
 
