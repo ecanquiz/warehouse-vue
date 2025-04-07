@@ -5,7 +5,7 @@ import useHttp from "@/core/composables/useHttp";
 // import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
 import MovementService from "@/modules/Warehouse/services/Movement";
 import MovementDetailService from "@/modules/Warehouse/services/MovementDetail";
-import type { Movement, Detail } from "../../types/Movement";
+import type { Movement, Detail } from "@/modules/Warehouse/types/Movement";
 
 export default (movementId?: string) => {
   const router = useRouter();
