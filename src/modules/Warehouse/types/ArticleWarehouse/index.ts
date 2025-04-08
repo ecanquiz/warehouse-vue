@@ -52,3 +52,7 @@ export type Link = {
   active: boolean;
 }
 
+export type ArticleSelected = {
+  [key: string]: boolean;
+};
+
