@@ -1,7 +1,9 @@
-import { onMounted, watch, inject } from "vue"
+import { onMounted, watch  } from "vue"
 import { useStoreWarehouse } from "@/modules/Warehouse/stores/"
 import { getArticlesSearchByCategories } from "@/modules/Warehouse/services/Article"
 import WarehouseService from  "@/modules/Warehouse/services/Warehouse"
+import type { Ref  } from "vue"
+
 import type {
   TableGrid,
   Data as TableGridData,
@@ -10,12 +12,11 @@ import type {
 
 interface Data extends TableGridData {
   categories: string[];
-  articleIds: string[]
+  articleIds: string; // "[]"
 }
 
-export default (data: Data): TableGrid => {
+export default (data: Data, articleIds: Ref<string>): TableGrid => {
   const store = useStoreWarehouse()
-  const {articleIds}: {articleIds: string[] } = inject('articleIds');
   
   onMounted(async () => await getSearch({
     page: "1",
@@ -24,18 +25,15 @@ export default (data: Data): TableGrid => {
     direction: ""    
   }))
 
-  // search
   let searchDebounceTimer: SetTimeout
 
   const setSearch = (e: Event): void => {
-    // clear previous timer and set new
     clearTimeout(searchDebounceTimer)
     searchDebounceTimer = setTimeout(() => {
        setLoad({ search: (e.target as HTMLInputElement).value })      
     }, 300)
   }
 
-  // sort (reverse direction if clicked twice on column)
   const setSort = (sort: "asc" | "des"): void => {    
     let direction = "asc";         
     if (data.sort == sort) {
@@ -44,7 +42,6 @@ export default (data: Data): TableGrid => {
     setLoad({direction, sort})
   };
 
-  // setLoad
   const setLoad = (newParams: object): void => {
     const params = {
       page: data.links || "1",
@@ -66,7 +63,7 @@ export default (data: Data): TableGrid => {
     data.sort = params.sort ?? "";
     data.direction = params.direction ?? "";
     data.categories = categories ?? [];
-    data.articleIds = articleIds ?? [];
+    data.articleIds = articleIds.value ?? "[]";
     
     const {data: { rows }} = await getArticlesSearchByCategories(
       new URLSearchParams(data as unknown as Params).toString()
@@ -79,11 +76,13 @@ export default (data: Data): TableGrid => {
     data.sort = data.sort ?? ""
     data.direction = rows.direction ?? ""
     data.categories = categories ?? []
-    data.articleIds = articleIds ?? [];
+    data.articleIds = articleIds.value ?? "[]";
   }
 
   watch(() => store.uuid, () => setLoad({}))
-  watch(articleIds, () => setLoad({articleIds}))
+  watch( articleIds, () => setLoad({ articleIds: articleIds.value }))
+
+
 
   return {
     getSearch,

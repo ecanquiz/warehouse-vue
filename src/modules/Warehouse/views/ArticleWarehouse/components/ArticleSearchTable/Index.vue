@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { reactive} from "vue"
+import { reactive, toRef} from "vue"
 import useTableGrid from "./composables/useTableGrid"
-import type { Movement, Detail } from '@/modules/Warehouse/types/Movement';
-import type { Article, QtyArticle } from '@/modules/Warehouse/types/Article';
+import type { ArticleSelected } from '@/modules/Warehouse/types/ArticleWarehouse'
 
-const details = reactive([])
-
-type SelectedArticle = {
-  [key: string]: boolean;
-};
-
-const emits = defineEmits<{
-  (e: 'selectArticle', selectedArticle: SelectedArticle): void
+const props = defineProps<{
+  articleIds: string;
 }>()
 
-const selectedArticle = reactive<SelectedArticle>({})
+const emits = defineEmits<{
+  (e: 'selectArticle', selectedArticle: ArticleSelected): void
+}>()
+
+const selectedArticle = reactive<ArticleSelected>({})
   
 const data = reactive({
   rows: [],
@@ -24,14 +21,14 @@ const data = reactive({
   direction: "",
   links: [],
   categories: [],
-  articleIds: []
+  articleIds: "[]"
 })
 
 const {
   getSearch,
   setSearch,
   setSort, 
-} = useTableGrid(data)
+} = useTableGrid(data, toRef( props, 'articleIds' ))
 
 const classTr = (index: number): string => {
   let num = (index%2 == 1) ? '100' : '200'

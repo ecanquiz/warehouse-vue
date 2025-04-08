@@ -2,6 +2,18 @@
 // @ts-nocheck
 import useIndex from "./composables/useIndex";
 
+const props = defineProps<{
+  articleIds: string
+}>()
+
+const emits = defineEmits<{
+  (e: 'updateArticleIds', arr: string): void
+}>()
+
+const updateArticleIds = (articleIds: string)=> {
+  emits('updateArticleIds', articleIds)
+}
+
 const {
   errors,
   data,
@@ -10,7 +22,7 @@ const {
   deleteRow,
   setSearch,
   setSort  
-} = useIndex()
+} = useIndex(props.articleIds, updateArticleIds)
 </script>
 
 <template>
