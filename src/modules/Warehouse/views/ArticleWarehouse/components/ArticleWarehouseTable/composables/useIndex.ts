@@ -8,9 +8,6 @@ import ArticleWarehouseService from "@/modules/Warehouse/services/ArticleWarehou
 type Params =  string | string[][] | Record<string, string> | URLSearchParams | undefined
 
 export default (articleIds, updateArticleIds) => {
-
-console.log(articleIds)
-
   const store = useStoreWarehouse ()  
 
   const data = reactive({
@@ -49,7 +46,7 @@ console.log(articleIds)
       .catch((error) => {
         if (error.response.status)
           alert(error.response.data.message)
-        console.error(error)
+        console.error('aqui', error)
       })
   }
 

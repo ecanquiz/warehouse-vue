@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { reactive, toRef} from "vue"
 import useTableGrid from "./composables/useTableGrid"
-import type { ArticleSelected } from '@/modules/Warehouse/types/ArticleWarehouse'
+import type { CheckedArticles } from '@/modules/Warehouse/types/ArticleWarehouse'
+import AppButton from "@/core/components/AppButton.vue";
 
 const props = defineProps<{
   articleIds: string;
 }>()
 
 const emits = defineEmits<{
-  (e: 'selectArticle', selectedArticle: ArticleSelected): void
+  (e: 'selectArticles', checkedArticle: CheckedArticles): void;
+  (e: 'submit'): void;
 }>()
 
-const selectedArticle = reactive<ArticleSelected>({})
+const checkedArticle = reactive<CheckedArticles>({})
   
 const data = reactive({
   rows: [],
@@ -36,29 +38,29 @@ const classTr = (index: number): string => {
 }
 
 const selectArticle =  async(articleId: string) => {
-  selectedArticle[articleId] = !selectedArticle[articleId];
-  emits("selectArticle", selectedArticle)
+  checkedArticle[articleId] = !checkedArticle[articleId];
+  emits("selectArticles", checkedArticle)
 
 }
+
+const submit = () => emits("submit")
 </script>
 
 <template>
-  <div class="overflow-x-auto panel">
-
-    <div class="flex justify-between items-center">
-      <div class="flex items-center">
-        <div class="flex w-full bg-white shadow rounded">
-          <input
-            class=""
-            type="text"
-            v-model="data.search"
-            @input="setSearch"
-            placeholder="Buscar…"
-          />
-        </div>
+<div class="overflow-x-auto panel">
+  <div class="flex justify-between items-center">
+    <div class="flex items-center">
+      <div class="flex w-full bg-white shadow rounded">
+        <input
+          class=""
+          type="text"
+          v-model="data.search"
+          @input="setSearch"
+          placeholder="Buscar…"
+        />
       </div>
     </div>
-      
+  </div>      
   <div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">     
     <table id="id_tab_presentacion" class="w-full text-sm text-left text-gray-500 dark:text-gray-400" width="100%">
       <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
@@ -95,7 +97,7 @@ const selectArticle =  async(articleId: string) => {
               <input
                 class="my-3"
                 type="checkbox"
-                v-model="selectedArticle[article.id]"
+                v-model="checkedArticle[article.id]"
                 :value="article.id"
                 @click="selectArticle(article.id)"
               />
@@ -116,9 +118,15 @@ const selectArticle =  async(articleId: string) => {
     :links="data.links"
     @getSearch="getSearch"
   />
-  <div class="">{{ selectedArticle }}</div>
-
-  <div class="hidden">{{ selectedArticle }}</div>
+  <div class="grid grid-flow-col justify-items-center">
+    <AppButton
+      class="btn btn-primary"
+      type="button"                 
+      data-testid="click-btn"
+      text="Agregar"
+      @click="submit"
+    />
   </div>
+</div>
 </template>
 

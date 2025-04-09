@@ -1,5 +1,5 @@
 import Http from "@/core/utils/Http";
-import type { ArticleWarehouse } from "../types/ArticleWarehouse";
+import type { ArticleWarehouse, AddArticles } from "../types/ArticleWarehouse";
 
 export const getArticleWarehouses = (query: string) => {  
   return Http.get(`/api/article-warehouse/?${query}`);
@@ -9,8 +9,8 @@ export const getArticleWarehouse = (article_warehouseId: string) => {
   return Http.get(`/api/article-warehouse/${article_warehouseId}`);
 }
 
-export const insertArticleWarehouse = (payload: ArticleWarehouse) => {   
-  return Http.post("/api/article_warehouse", payload);
+export const insertArticleWarehouse = (payload: ArticleWarehouse) => {  
+  return Http.post("/api/article_warehouse", payload); // route not found 
 }
   
 export const updateArticleWarehouse = (article_warehouseId: string, payload: ArticleWarehouse) => {   
@@ -29,6 +29,10 @@ export const getArticlesWarehouseSearch = (query: string) => {
   return Http.get(`/api/articles-warehouse-search?${query}`);
 }
 
+export const addArticleWarehouse = (payload: AddArticles) => {   
+  return Http.post("/api/article-warehouse", payload);
+}
+
 export default {
   getArticlesWarehouseSearch,
   getArticleWarehouses,
@@ -36,5 +40,6 @@ export default {
   insertArticleWarehouse,
   updateArticleWarehouse,
   deleteArticleWarehouse,
-  getHelpArticleWarehouse
+  getHelpArticleWarehouse,
+  addArticleWarehouse
 }
