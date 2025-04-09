@@ -52,7 +52,11 @@ export type Link = {
   active: boolean;
 }
 
-export type ArticleSelected = {
+export type CheckedArticles = {
   [key: string]: boolean;
 };
 
+export type AddArticles = {
+  warehouseUuid: string;
+  articleIds: string[]
+}
